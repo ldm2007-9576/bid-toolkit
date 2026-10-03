@@ -1,0 +1,17 @@
+# 🔴 商品交付物绝对不许进公开仓库 —— 这些是**卖的东西**（Word/Excel/PPT 可编辑源文件包）。
+#    把它们 push 到公开仓库 = 把商品免费送掉，一次提交就毁掉整条盈利链。
+#    site/files/ 下 56MB 全是它（zip / docx / xlsx）。
+files/
+*.zip
+*.docx
+*.xlsx
+
+# sitemap.xml 里列着 files/ 下每个交付物的直链 ⇒ 公开它等于间接公开商品。
+sitemap.xml
+
+# IndexNow 密钥文件（key 本身可公开，但没必要，且会让人误以为本站有多个 key）
+587fc5c4b43ca5bedd18bd0055e1a9ef.txt
+
+# 备份/临时
+*.bak*
+.DS_Store

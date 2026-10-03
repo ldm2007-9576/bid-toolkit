@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>投标报价测算器：算清价格分再报价 | 投标工具箱</title>
+<meta name="description" content="免费在线投标报价测算工具：输入各家报价与评分规则，自动计算最低价满分法、基准价法下的价格分与排名，报价前先算清价格分。配套投标报价策略手册、废标红线核查表等投标资料。">
+<style>
+  :root{--bg:#f7f8fa;--card:#ffffff;--ink:#1a1d24;--sub:#5b6472;--line:#e6e9ef;--brand:#1f5fd0;--ok:#0f9d58;--warn:#d93025;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+  h1{font-size:24px;margin:12px 0 4px}
+  .lead{color:var(--sub);font-size:14.5px;margin-bottom:20px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:18px}
+  .panel h2{font-size:17px;margin-bottom:12px}
+  label{display:block;font-size:13.5px;color:var(--sub);margin:10px 0 4px}
+  input,select{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;background:#fff;color:var(--ink)}
+  input:focus,select:focus{outline:2px solid #bcd0f5;border-color:var(--brand)}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .row>div{flex:1;min-width:180px}
+  .hint{font-size:12.5px;color:var(--sub);margin-top:4px}
+  button{background:var(--brand);color:#fff;border:none;border-radius:8px;padding:11px 26px;font-size:15.5px;font-family:inherit;cursor:pointer;margin-top:14px}
+  button:hover{opacity:.92}
+  button.ghost{background:#eef2f9;color:var(--brand);margin-left:8px}
+  table{width:100%;border-collapse:collapse;margin-top:14px;background:#fff;border:1px solid var(--line)}
+  th,td{padding:9px 10px;border:1px solid var(--line);font-size:14px;text-align:center}
+  th{background:#f0f4fb;font-weight:700}
+  td.money{text-align:right;font-variant-numeric:tabular-nums}
+  .top1{background:#e8f6ee;font-weight:700}
+  .zero{color:var(--warn)}
+  .note{font-size:12.5px;color:var(--sub);margin-top:10px}
+  .cta{background:linear-gradient(135deg,#1f5fd0,#2f7ae5);border-radius:14px;padding:18px 22px;color:#fff;margin-top:6px}
+  .cta h3{font-size:16.5px;margin-bottom:6px}
+  .cta p{font-size:13.5px;opacity:.94;margin-bottom:4px}
+  .cta a{color:#ffe28a;font-weight:700;text-decoration:none}
+  #result:empty::after{content:"填好上方数据后点「计算价格分」，结果将显示在这里。";color:var(--sub);font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>投标报价测算器</h1>
+  <p class="lead">报价前先算清价格分：输入各家报价与评分规则，自动测算两种常见规则下的得分与排名。数据只在你的浏览器里计算，不会上传。</p>
+
+  <div class="panel">
+    <h2>第一步：评分规则</h2>
+    <div class="row">
+      <div>
+        <label>价格分满分</label>
+        <input id="full" type="number" value="10" step="0.5" min="1">
+      </div>
+      <div>
+        <label>计分规则</label>
+        <select id="rule">
+          <option value="min">最低价满分法（有效报价最低者得满分）</option>
+          <option value="base">基准价法（基准价得分，偏离扣分）</option>
+        </select>
+      </div>
+      <div id="baseOpt" style="display:none">
+        <label>基准价取法</label>
+        <select id="baseType">
+          <option value="avg">有效报价平均值</option>
+          <option value="second">次低价</option>
+          <option value="avgDown">平均值下浮（下浮率见下）</option>
+        </select>
+      </div>
+    </div>
+    <div class="row" id="penRow" style="display:none">
+      <div>
+        <label>高于基准价：每高 1% 扣</label>
+        <input id="penUp" type="number" value="1" step="0.1" min="0">
+      </div>
+      <div>
+        <label>低于基准价：每低 1% 扣</label>
+        <input id="penDown" type="number" value="0.5" step="0.1" min="0">
+      </div>
+      <div>
+        <label>平均值下浮率（%）</label>
+        <input id="downRate" type="number" value="0" step="0.5" min="0">
+      </div>
+    </div>
+    <div>
+      <label>最低价满分法：每高 1% 扣</label>
+      <input id="penMin" type="number" value="1" step="0.1" min="0">
+      <div class="hint">常见为每高 1% 扣 1 分，具体以招标文件评分办法为准。</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>第二步：各家报价（万元）</h2>
+    <div>
+      <label>报价列表：每行一个，格式「单位名称,报价」；也可以只填报价。</label>
+      <textarea id="bids" rows="6" style="width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit" placeholder="例如：&#10;A公司,3580&#10;B公司,3650&#10;C公司,3490"></textarea>
+      <div class="hint">控制价（最高限价）：<input id="cap" type="number" step="0.01" min="0" placeholder="选填，用于标记超限价" style="display:inline-block;width:180px;margin-left:6px"> 万元</div>
+    </div>
+    <button id="calcBtn">计算价格分</button>
+    <button class="ghost" id="resetBtn">清空重填</button>
+  </div>
+
+  <div class="panel">
+    <h2>第三步：测算结果</h2>
+    <div id="result"></div>
+    <p class="note">本工具为简化测算，仅覆盖两种常见价格分规则；实际以招标文件评分办法原文为准。基准价法若招标文件另有去掉最高最低、四舍五入位数等规定，结果会有出入。</p>
+  </div>
+
+  <div class="cta">
+    <h3>报价只是投标的一环：这几样资料配齐更稳</h3>
+    <p>《投标报价决策工具包》：算分规则、成本红线、自查清单都在里面，闲鱼拍 <a href="https://www.goofish.com/item?id=1086326705554" target="_blank" rel="noopener">投标报价决策工具包</a>，拍下自动发货。</p>
+    <p>《废标红线核查表 45 项》《招标文件解读手册》《开标流程手册》等全套资料见 <a href="index.html">投标工具箱首页</a>。</p>
+    <p>报价之外那 45 项废标红线也要一起过：闲鱼拍 <a href="https://www.goofish.com/item?id=1085689234262" target="_blank" rel="noopener">工程投标资料全套 24 件</a>（含废标红线核查表、报价决策工具包、评标响应表），一次配齐，拍下自动发货。</p>
+  </div>
+</div>
+
+<script>
+var ruleSel = document.getElementById('rule');
+ruleSel.addEventListener('change', function(){
+  var isBase = ruleSel.value === 'base';
+  document.getElementById('baseOpt').style.display = isBase ? '' : 'none';
+  document.getElementById('penRow').style.display = isBase ? '' : 'none';
+});
+document.getElementById('resetBtn').addEventListener('click', function(){
+  document.getElementById('bids').value = '';
+  document.getElementById('result').innerHTML = '';
+});
+document.getElementById('calcBtn').addEventListener('click', function(){
+  var full = parseFloat(document.getElementById('full').value);
+  var rule = ruleSel.value;
+  var cap = parseFloat(document.getElementById('cap').value);
+  var lines = document.getElementById('bids').value.split('\n');
+  var bids = [];
+  for (var i = 0; i < lines.length; i++){
+    var s = lines[i].trim();
+    if (!s) continue;
+    var parts = s.split(/[,，\t]+/);
+    var name, price;
+    if (parts.length >= 2){ name = parts[0].trim(); price = parseFloat(parts[parts.length-1].replace(/[^\d.]/g,'')); }
+    else { name = '投标人' + (bids.length+1); price = parseFloat(parts[0].replace(/[^\d.]/g,'')); }
+    if (isFinite(price) && price > 0) bids.push({name:name, price:price});
+  }
+  var box = document.getElementById('result');
+  if (!isFinite(full) || full <= 0 || bids.length === 0){
+    box.innerHTML = '<p class="note" style="color:var(--warn)">请填写价格分满分和至少一条报价。</p>';
+    return;
+  }
+  var over = [];
+  var valid = bids.filter(function(b){
+    if (isFinite(cap) && cap > 0 && b.price > cap){ over.push(b); return false; }
+    return true;
+  });
+  if (valid.length === 0){
+    box.innerHTML = '<p class="note" style="color:var(--warn)">没有有效报价（全部超限价？）。</p>';
+    return;
+  }
+  var minP = Math.min.apply(null, valid.map(function(b){return b.price;}));
+  var base = null, penUp = 0, penDown = 0;
+  if (rule === 'base'){
+    var bt = document.getElementById('baseType').value;
+    penUp = parseFloat(document.getElementById('penUp').value) || 0;
+    penDown = parseFloat(document.getElementById('penDown').value) || 0;
+    var sum = 0; valid.forEach(function(b){ sum += b.price; });
+    if (bt === 'avg') base = sum / valid.length;
+    else if (bt === 'second'){
+      var sorted = valid.map(function(b){return b.price;}).sort(function(a,b){return a-b;});
+      base = sorted.length >= 2 ? sorted[1] : sorted[0];
+    } else {
+      var dr = parseFloat(document.getElementById('downRate').value) || 0;
+      base = (sum / valid.length) * (1 - dr/100);
+    }
+  }
+  function score(b){
+    if (rule === 'min'){
+      var pen = parseFloat(document.getElementById('penMin').value) || 0;
+      return Math.max(0, full - pen * (b.price - minP) / minP * 100);
+    }
+    var dev = (b.price - base) / base * 100;
+    var cut = dev >= 0 ? dev * penUp : (-dev) * penDown;
+    return Math.max(0, full - cut);
+  }
+  valid.forEach(function(b){ b.score = score(b); });
+  var rows = valid.slice().sort(function(a,b){ return b.score - a.score; });
+  var html = '<table><tr><th>排名</th><th>单位</th><th>报价（万元）</th>';
+  if (rule === 'base') html += '<th>偏离基准</th>';
+  html += '<th>价格分</th></tr>';
+  rows.forEach(function(b, idx){
+    var cls = idx === 0 ? ' class="top1"' : '';
+    html += '<tr' + cls + '><td>' + (idx+1) + '</td><td>' + b.name + '</td><td class="money">' + b.price.toFixed(2) + '</td>';
+    if (rule === 'base') html += '<td>' + ((b.price - base)/base*100).toFixed(2) + '%</td>';
+    html += '<td>' + b.score.toFixed(2) + '</td></tr>';
+  });
+  html += '</table>';
+  html += '<p class="note">' + (rule === 'min'
+    ? '规则：最低价 ' + minP.toFixed(2) + ' 万元得满分 ' + full + ' 分。'
+    : '基准价：' + base.toFixed(2) + ' 万元（' + document.getElementById('baseType').options[document.getElementById('baseType').selectedIndex].text + '）。');
+  if (over.length) html += ' 超限价被剔除：' + over.map(function(b){return b.name + '（' + b.price.toFixed(2) + '）';}).join('、') + '。';
+  html += '</p>';
+  box.innerHTML = html;
+});
+</script>
+</body>
+</html>

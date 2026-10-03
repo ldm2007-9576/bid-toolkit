@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>废标自查打勾器：45 项逐条过 | 投标工具箱</title>
+<meta name="description" content="免费在线废标自查工具：45 项废标红线逐条打勾自查，覆盖资格性、形式性、响应性、电子标、诚信类五类，进度自动保存。配套废标红线核查表 Excel、废标避坑手册等投标资料。">
+<style>
+  :root{--bg:#f7f8fa;--card:#ffffff;--ink:#1a1d24;--sub:#5b6472;--line:#e6e9ef;--brand:#1f5fd0;--red:#d93025;--orange:#e8710a;--blue:#1a73e8;--ok:#0f9d58;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 16px 60px}
+  h1{font-size:24px;margin:12px 0 4px}
+  .lead{color:var(--sub);font-size:14.5px;margin-bottom:16px}
+  .progress-panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:18px}
+  .bar{height:10px;background:#eef1f6;border-radius:6px;overflow:hidden;margin:10px 0 8px}
+  .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--ok));width:0%;transition:width .3s}
+  .stats{font-size:13.5px;color:var(--sub)}
+  .stats b{color:var(--ink)}
+  .stats .bad{color:var(--red);font-weight:700}
+  .cat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+  .cat h2{font-size:16.5px;margin-bottom:2px}
+  .cat .desc{font-size:12.5px;color:var(--sub);margin-bottom:10px}
+  .item{display:flex;gap:10px;padding:10px 10px;border-radius:10px;align-items:flex-start}
+  .item:hover{background:#f4f7fd}
+  .item input{margin-top:5px;width:17px;height:17px;flex:none;accent-color:var(--ok)}
+  .item.done .txt{opacity:.45;text-decoration:line-through}
+  .badge{flex:none;font-size:11px;padding:2px 8px;border-radius:20px;margin-top:4px;font-weight:700}
+  .b-red{background:#fdecea;color:var(--red)}
+  .b-high{background:#fef3e6;color:var(--orange)}
+  .b-mid{background:#e8f0fe;color:var(--blue)}
+  .txt b{font-size:14.5px}
+  .txt p{font-size:12.5px;color:var(--sub);margin-top:2px}
+  .btns{margin:6px 0 0}
+  button{background:var(--brand);color:#fff;border:none;border-radius:8px;padding:10px 22px;font-size:14.5px;font-family:inherit;cursor:pointer}
+  button.ghost{background:#eef2f9;color:var(--brand);margin-left:8px}
+  .cta{background:linear-gradient(135deg,#1f5fd0,#2f7ae5);border-radius:14px;padding:18px 22px;color:#fff;margin-top:10px}
+  .cta h3{font-size:16.5px;margin-bottom:6px}
+  .cta p{font-size:13.5px;opacity:.94;margin-bottom:4px}
+  .cta a{color:#ffe28a;font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>废标自查打勾器（45 项）</h1>
+  <p class="lead">投标文件封包前逐条过一遍：完成一项打一个勾，进度自动保存在本机浏览器，数据不上传。红色徽章为废标红线，一条都不能留空。</p>
+
+  <div class="progress-panel">
+    <div class="stats" id="stats"></div>
+    <div class="bar"><i id="bar"></i></div>
+    <div class="btns">
+      <button class="ghost" id="resetBtn">清空重查</button>
+      <button id="dlBtn" style="margin-left:8px">导出未完成清单</button>
+    </div>
+  </div>
+
+  <div id="cats"></div>
+
+  <div class="cta">
+    <h3>查完只是自查：机器复核更稳</h3>
+    <p>《废标红线核查表 45 项》Excel 版：可填招标要求与我方响应，打印进标书工作底稿。</p>
+    <p>《标书制作零基础入门：废标避坑手册》《招标文件解读手册》《开标流程手册》等全套资料见 <a href="index.html">投标工具箱首页</a>。</p>
+    <p>要留档、要打印进标书底稿：拍 <a href="https://www.goofish.com/item?id=1084295435400" target="_blank" rel="noopener">《废标红线核查表 45 项》Excel 版</a>，带判定栏 + 证据栏，逐条填完直接打印附进标书，拍下自动发货。</p>
+  </div>
+</div>
+
+<script>
+var DATA = [{"no": 1, "risk": "红线", "cat": "资格性", "name": "营业执照", "std": "未提供、已过期、经营范围不含招标内容、三证合一信息不一致"}, {"no": 2, "risk": "红线", "cat": "资格性", "name": "资质证书", "std": "资质类别/等级不满足招标公告要求，或证书过期、未年审"}, {"no": 3, "risk": "红线", "cat": "资格性", "name": "安全生产许可证", "std": "未提供、过期或被暂扣（建安类项目必备）"}, {"no": 4, "risk": "红线", "cat": "资格性", "name": "项目经理注册建造师证", "std": "专业/等级不符、注册单位非本单位、未按要求提供续期页"}, {"no": 5, "risk": "红线", "cat": "资格性", "name": "项目经理安全考核B证", "std": "未提供或过期；与建造师证姓名不一致"}, {"no": 6, "risk": "红线", "cat": "资格性", "name": "专职安全员C证", "std": "数量不满足资质要求或证书过期"}, {"no": 7, "risk": "红线", "cat": "资格性", "name": "技术负责人职称证", "std": "职称专业/等级不满足招标文件规定（如要求高级工程师）"}, {"no": 8, "risk": "高", "cat": "资格性", "name": "财务审计报告", "std": "未提供近三年审计报告，或资产负债率超招标文件限制"}, {"no": 9, "risk": "高", "cat": "资格性", "name": "纳税与社保证明", "std": "未按期限提供；社保人数不满足要求"}, {"no": 10, "risk": "红线", "cat": "资格性", "name": "联合体协议", "std": "联合体投标未附共同投标协议，或职责分工不明确"}, {"no": 11, "risk": "红线", "cat": "资格性", "name": "投标保证金", "std": "未提交、金额不足、到账超时、形式不符、非基本账户转出（招标文件有要求时）"}, {"no": 12, "risk": "红线", "cat": "资格性", "name": "失信与黑名单", "std": "被列入失信被执行人、经营异常、建设市场黑名单、被暂停投标资格"}, {"no": 13, "risk": "红线", "cat": "资格性", "name": "行贿犯罪记录", "std": "未按要求提供无行贿犯罪记录承诺/查询结果"}, {"no": 14, "risk": "红线", "cat": "形式性", "name": "投标文件签署盖章", "std": "未加盖单位公章、无法定代表人或授权代表签字；复印件未加盖公章"}, {"no": 15, "risk": "红线", "cat": "形式性", "name": "投标文件密封", "std": "未按招标文件要求密封、封口未盖章、封套标识错误"}, {"no": 16, "risk": "红线", "cat": "形式性", "name": "投标有效期", "std": "投标有效期短于招标文件规定天数（常见90/120天）"}, {"no": 17, "risk": "红线", "cat": "形式性", "name": "递交时限", "std": "逾期送达、逾期上传电子投标文件、未在解密时限内解密"}, {"no": 18, "risk": "高", "cat": "形式性", "name": "正副本份数与标识", "std": "份数不足、正副本标识错误、电子版格式不符（如要求可编辑版）"}, {"no": 19, "risk": "红线", "cat": "形式性", "name": "投标报价唯一性", "std": "同一项目提交两份及以上不同报价文件（招标文件未允许备选方案时）"}, {"no": 20, "risk": "红线", "cat": "形式性", "name": "投标函与工期承诺", "std": "工期超过招标文件规定期限；质量目标未响应"}, {"no": 21, "risk": "红线", "cat": "响应性", "name": "实质性条款（★号条款）", "std": "招标文件标注★/实质性要求的任一条负偏离即废标"}, {"no": 22, "risk": "红线", "cat": "响应性", "name": "技术规格响应", "std": "关键技术参数负偏离、未按要求提供检测报告/样品"}, {"no": 23, "risk": "红线", "cat": "响应性", "name": "工程量清单", "std": "擅自修改招标人提供的工程量清单项目编码、名称、特征、单位、数量"}, {"no": 24, "risk": "红线", "cat": "响应性", "name": "最高投标限价", "std": "投标总报价超过公布的最高投标限价（或单价超限价）"}, {"no": 25, "risk": "高", "cat": "响应性", "name": "低于成本报价", "std": "报价明显低于其他投标且不能合理说明或提供证明"}, {"no": 26, "risk": "高", "cat": "响应性", "name": "报价一致性", "std": "大小写金额不一致、单位错误、投标函与清单汇总金额不一致"}, {"no": 27, "risk": "高", "cat": "响应性", "name": "不可竞争费用", "std": "规费、税金、安全文明施工费未按招标文件规定计取；改动暂列金额、暂估价"}, {"no": 28, "risk": "红线", "cat": "响应性", "name": "商务偏离表", "std": "未提交偏离表或实质性条款存在未声明的负偏离"}, {"no": 29, "risk": "红线", "cat": "电子标", "name": "电子签章与加密", "std": "未按交易平台要求使用CA签章、加密失败、上传文件损坏"}, {"no": 30, "risk": "红线", "cat": "电子标", "name": "解密失败", "std": "开标时未按时解密或解密环境不符导致无法读取"}, {"no": 31, "risk": "红线", "cat": "电子标", "name": "机器码/锁号一致", "std": "不同投标人电子文件制作机器码、计价软件加密锁号、MAC地址一致，即视为串通投标"}, {"no": 32, "risk": "红线", "cat": "诚信类", "name": "串通投标情形", "std": "文件异常一致、报价呈规律性差异、委托同一单位或个人办理投标事宜等"}, {"no": 33, "risk": "红线", "cat": "诚信类", "name": "弄虚作假", "std": "伪造证书、虚构业绩、虚假承诺、伪造印章或签名"}, {"no": 34, "risk": "高", "cat": "诚信类", "name": "以他人名义投标", "std": "挂靠、借用资质、租借证书"}, {"no": 35, "risk": "中", "cat": "形式性", "name": "字迹与装订", "std": "关键字迹模糊无法辨认、缺页、倒页、装订散落"}, {"no": 36, "risk": "中", "cat": "形式性", "name": "目录与页码", "std": "未按招标文件要求编制目录、页码不连续或缺失"}, {"no": 37, "risk": "中", "cat": "形式性", "name": "法人授权委托书", "std": "被授权人非本单位人员、授权期限过期、未附双方身份证复印件"}, {"no": 38, "risk": "中", "cat": "资格性", "name": "业绩证明材料", "std": "业绩规模/时间不满足，或缺少中标通知书、合同、竣工验收证明任一关键件"}, {"no": 39, "risk": "中", "cat": "资格性", "name": "机械设备承诺", "std": "自有设备无发票/购置证明，租赁设备无租赁协议"}, {"no": 40, "risk": "中", "cat": "响应性", "name": "农民工工资与社保承诺", "std": "未提交工资支付保障承诺、未开设专户承诺"}, {"no": 41, "risk": "中", "cat": "响应性", "name": "质量与安全承诺", "std": "未响应质量保修期、安全生产标准化目标、环保措施承诺"}, {"no": 42, "risk": "中", "cat": "形式性", "name": "投标保证金退还信息", "std": "未附开户许可证/基本存款账户信息、退保账户信息错误"}, {"no": 43, "risk": "中", "cat": "形式性", "name": "文件份数与电子版", "std": "要求提供电子版U盘/光盘而未提供或格式不符"}, {"no": 44, "risk": "高", "cat": "资格性", "name": "外地企业备案", "std": "未按项目所在地要求办理进鲁/进市备案或信息登记"}, {"no": 45, "risk": "中", "cat": "形式性", "name": "开标出席与证件", "std": "法定代表人或授权代表未按时到场、未携带有效身份证件（现场开标要求时）"}];
+var CATS = ["资格性", "形式性", "响应性", "电子标", "诚信类"];
+var CAT_DESC = {"资格性": "资格不符直接否决投标：证照、人员、保证金、联合体。", "形式性": "签署、密封、份数、格式，最容易踩的低级坑。", "响应性": "对招标要求的逐条响应：星号参数、工期、偏离表。", "电子标": "线上开标特有：CA、上传、解密，超时即出局。", "诚信类": "信用与承诺：失信名单、虚假材料一票否决。"};
+var KEY = "failcheck_v1";
+
+function loadState(){ try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ return {}; } }
+function saveState(s){ localStorage.setItem(KEY, JSON.stringify(s)); }
+
+function render(){
+  var st = loadState();
+  var root = document.getElementById("cats");
+  var html = "";
+  CATS.forEach(function(cat){
+    var list = DATA.filter(function(x){ return x.cat === cat; })
+                   .sort(function(a,b){ return a.rk - b.rk || a.no - b.no; });
+    html += '<div class="cat"><h2>' + cat + '（' + list.length + ' 项）</h2>';
+    html += '<div class="desc">' + (CAT_DESC[cat] || "") + '</div>';
+    list.forEach(function(it){
+      var cls = "badge b-" + (it.risk === "红线" ? "red" : it.risk === "高" ? "high" : "mid");
+      var checked = st[it.no] ? " done" : "";
+      html += '<label class="item' + checked + '">'
+        + '<input type="checkbox" data-no="' + it.no + '"' + (st[it.no] ? " checked" : "") + '>'
+        + '<span class="' + cls + '">' + it.risk + '</span>'
+        + '<span class="txt"><b>' + it.no + '. ' + it.name + '</b><p>' + it.std + '</p></span></label>';
+    });
+    html += '</div>';
+  });
+  root.innerHTML = html;
+  root.querySelectorAll("input[type=checkbox]").forEach(function(cb){
+    cb.addEventListener("change", function(){
+      var s = loadState();
+      var no = cb.getAttribute("data-no");
+      if (cb.checked) s[no] = 1; else delete s[no];
+      saveState(s);
+      cb.closest(".item").classList.toggle("done", cb.checked);
+      updateStats();
+    });
+  });
+  updateStats();
+}
+
+function updateStats(){
+  var st = loadState();
+  var done = 0, redLeft = 0;
+  DATA.forEach(function(it){
+    if (st[it.no]) done++;
+    else if (it.risk === "红线") redLeft++;
+  });
+  var pct = Math.round(done / DATA.length * 100);
+  document.getElementById("bar").style.width = pct + "%";
+  document.getElementById("stats").innerHTML =
+    '进度：<b>' + done + ' / ' + DATA.length + '</b>（' + pct + '%）'
+    + (redLeft > 0 ? '　<span class="bad">废标红线还有 ' + redLeft + ' 项未确认</span>' : '　<span style="color:var(--ok);font-weight:700">红线项全部确认完毕</span>');
+}
+
+document.getElementById("resetBtn").addEventListener("click", function(){
+  if (!confirm("确定清空所有打勾记录？")) return;
+  localStorage.removeItem(KEY);
+  render();
+});
+document.getElementById("dlBtn").addEventListener("click", function(){
+  var st = loadState();
+  var left = DATA.filter(function(it){ return !st[it.no]; });
+  if (left.length === 0){ alert("45 项全部确认完毕，可以封包了。"); return; }
+  var lines = left.map(function(it){ return it.no + ". [" + it.risk + "][" + it.cat + "] " + it.name + "：" + it.std; });
+  var blob = new Blob(["废标自查未完成清单（" + left.length + " 项）\n\n" + lines.join("\n")], {type:"text/plain;charset=utf-8"});
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "废标自查未完成清单.txt";
+  a.click();
+});
+render();
+</script>
+</body>
+</html>
