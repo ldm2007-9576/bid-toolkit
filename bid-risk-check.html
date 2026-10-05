@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>投标文件废标红线自查器 · 45项</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:12px;background:#f5f6f8;color:#1c1e21;
+ font:15px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+.wrap{max-width:720px;margin:0 auto}
+h1{font-size:19px;margin:0 0 4px}
+.sub{color:#6b7280;font-size:12px;margin-bottom:12px}
+.card{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;
+ box-shadow:0 1px 3px rgba(0,0,0,.07)}
+.stats{font-size:14px;margin-bottom:6px}
+.stats b{font-size:17px}
+.bar{height:7px;background:#e5e7eb;border-radius:4px;overflow:hidden;margin:8px 0}
+.bar i{display:block;height:100%;width:0;background:#16a34a;transition:width .25s}
+.msg{font-size:13px;padding:8px 10px;border-radius:8px;background:#f3f4f6;color:#374151}
+.msg.red{background:#fef2f2;color:#b91c1c}
+.msg.green{background:#f0fdf4;color:#15803d}
+.hd{font-size:13px;font-weight:700;color:#6b7280;margin:14px 0 6px;padding-left:2px}
+.it{border:1px solid #e5e7eb;border-radius:10px;padding:10px 11px;margin-bottom:8px;background:#fff}
+.it.bad{border-color:#fca5a5;background:#fff5f5}
+.it.skip{opacity:.5}
+.top{display:flex;gap:7px;align-items:flex-start}
+.lv{flex:none;font-size:11px;font-weight:700;padding:2px 6px;border-radius:5px;color:#fff}
+.lv.r{background:#dc2626}.lv.h{background:#ea580c}.lv.m{background:#9ca3af}
+.nm{flex:1;font-weight:600;font-size:14px}
+.std{font-size:12.5px;color:#6b7280;margin:5px 0 0}
+.op{display:flex;gap:6px;margin-top:8px}
+.op button{flex:1;padding:7px 0;font-size:13px;border:1px solid #d1d5db;background:#fff;
+ border-radius:7px;color:#374151;cursor:pointer}
+.op button.on{background:#16a34a;border-color:#16a34a;color:#fff}
+.op button.on.no{background:#dc2626;border-color:#dc2626}
+.op button.on.sk{background:#9ca3af;border-color:#9ca3af}
+.addrow{display:flex;gap:6px;margin-top:10px}
+.addrow input{flex:1;padding:8px;border:1px solid #d1d5db;border-radius:7px;font-size:14px}
+.addrow button{padding:8px 14px;border:0;background:#2563eb;color:#fff;border-radius:7px;font-size:14px;cursor:pointer}
+.tools{display:flex;gap:8px;margin-top:10px}
+.tools button{flex:1;padding:10px 0;border:1px solid #d1d5db;background:#fff;border-radius:8px;
+ font-size:14px;color:#374151;cursor:pointer}
+ul.risk{margin:8px 0 0;padding-left:18px;font-size:13.5px}
+ul.risk li{margin:3px 0}
+.foot{color:#9ca3af;font-size:11.5px;text-align:center;padding:8px 0 20px}
+.lead2{background:#f7faff;border:1px solid #cfe0fb}
+.lead2 h3{font-size:14.5px;margin:0 0 6px}
+.lead2 p{font-size:13.5px;color:#374151;margin:0 0 10px}
+.cta{display:block;text-align:center;background:#2563eb;color:#fff;text-decoration:none;
+ border-radius:9px;padding:11px 0;font-size:15px;font-weight:600}
+.cta:hover{background:#1d4ed8}
+.lead2 .tip{font-size:12.5px;color:#6b7280;margin-top:9px;line-height:1.6}
+/* 结算区动态转化位：结论出来那一刻才出现，全绿时不推销 */
+.dyncta{display:none;margin-top:9px;padding:10px 12px;border-radius:9px;
+ background:#fff7ed;border:1px solid #fed7aa;font-size:13.5px;color:#7c2d12;line-height:1.65}
+.dyncta b{color:#b91c1c}
+.dyncta a{display:inline-block;margin-top:8px;color:#1d4ed8;font-weight:600;text-decoration:none;
+ border-bottom:1px solid #93c5fd}
+@media print{.tools,.addrow,.op,.lead2,.dyncta{display:none}.card{box-shadow:none;border:1px solid #ddd}}
+</style></head><body><div class="wrap">
+
+<div class="card">
+  <h1>投标文件废标红线自查器</h1>
+  <div class="sub">45 项 · 2026 版 ｜ 投之前逐条过一遍，别等废标了才知道</div>
+  <div class="stats">已核 <b id="dn">0</b> / <b id="tot">0</b> 项
+    ｜ <span style="color:#dc2626">红线未过 <b id="rd">0</b></span>
+    ｜ <span style="color:#ea580c">高危未过 <b id="hg">0</b></span></div>
+  <div class="bar"><i id="bar"></i></div>
+  <div class="msg" id="msg">开始逐条选，选完直接告诉你哪条会废标。</div>
+  <div class="dyncta" id="dyncta"></div>
+  <div class="tools">
+    <button id="rst">清空重来</button>
+    <button id="prt">打印/存PDF</button>
+  </div>
+</div>
+
+<div id="list"></div>
+
+<div class="card">
+  <div style="font-weight:600;font-size:14px">加你这份招标文件的专用条款</div>
+  <div class="sub" style="margin:4px 0 0">不同项目（比如水利）会有额外要求，自己加进去，一样会算进结论。</div>
+  <div class="addrow"><input id="ni" placeholder="例：项目经理须有水利水电一级建造师"><button id="ad">添加</button></div>
+</div>
+
+<div class="card lead2">
+  <h3>核完还是拿不准？</h3>
+  <p>这 45 项是通用项。你那份招标文件的<b>专用条款</b>（比如水利、暗标、特定业绩要求）不在这里面，
+  而废标往往就废在这些专用条款上。<br>
+  把做好的投标文件（.docx）发我，机器逐条扫完，直接告诉你哪几条会废标、在第几页 —— 不用装软件，不看你的报价。</p>
+  <a class="cta" href="https://www.goofish.com/item?id=1087170587415" target="_blank" rel="noopener">闲鱼发标书 .docx · 机器逐条扫 →</a>
+  <div class="tip">你怎么发、我怎么回：把标书 <b>.docx</b> 发过来，扫完发你<b>分级问题清单 ＋ HTML 报告</b>（24 小时内），每条都带证据（命中了哪个词、哪个值）。<br>
+  只想自己核对也行：拍下 <a href="https://www.goofish.com/item?id=1084295435400" target="_blank" rel="noopener">45 项可编辑 Excel 版</a>（带判定栏 ＋ 证据栏，拍下自动发货）。</div>
+</div>
+
+<div class="foot">进度只存在你自己这台设备上，不上传。<br>通用项以《招标投标法》及各地交易中心常见要求整理；最终以你那份招标文件为准。</div>
+</div>
+<script>
+var DATA=[{"n": 21, "lv": "红线", "cat": "响应性", "name": "实质性条款（★号条款）", "std": "招标文件标注★/实质性要求的任一条负偏离即废标"}, {"n": 22, "lv": "红线", "cat": "响应性", "name": "技术规格响应", "std": "关键技术参数负偏离、未按要求提供检测报告/样品"}, {"n": 23, "lv": "红线", "cat": "响应性", "name": "工程量清单", "std": "擅自修改招标人提供的工程量清单项目编码、名称、特征、单位、数量"}, {"n": 24, "lv": "红线", "cat": "响应性", "name": "最高投标限价", "std": "投标总报价超过公布的最高投标限价（或单价超限价）"}, {"n": 28, "lv": "红线", "cat": "响应性", "name": "商务偏离表", "std": "未提交偏离表或实质性条款存在未声明的负偏离"}, {"n": 14, "lv": "红线", "cat": "形式性", "name": "投标文件签署盖章", "std": "未加盖单位公章、无法定代表人或授权代表签字；复印件未加盖公章"}, {"n": 15, "lv": "红线", "cat": "形式性", "name": "投标文件密封", "std": "未按招标文件要求密封、封口未盖章、封套标识错误"}, {"n": 16, "lv": "红线", "cat": "形式性", "name": "投标有效期", "std": "投标有效期短于招标文件规定天数（常见90/120天）"}, {"n": 17, "lv": "红线", "cat": "形式性", "name": "递交时限", "std": "逾期送达、逾期上传电子投标文件、未在解密时限内解密"}, {"n": 19, "lv": "红线", "cat": "形式性", "name": "投标报价唯一性", "std": "同一项目提交两份及以上不同报价文件（招标文件未允许备选方案时）"}, {"n": 20, "lv": "红线", "cat": "形式性", "name": "投标函与工期承诺", "std": "工期超过招标文件规定期限；质量目标未响应"}, {"n": 29, "lv": "红线", "cat": "电子标", "name": "电子签章与加密", "std": "未按交易平台要求使用CA签章、加密失败、上传文件损坏"}, {"n": 30, "lv": "红线", "cat": "电子标", "name": "解密失败", "std": "开标时未按时解密或解密环境不符导致无法读取"}, {"n": 31, "lv": "红线", "cat": "电子标", "name": "机器码/锁号一致", "std": "不同投标人电子文件制作机器码、计价软件加密锁号、MAC地址一致——视为串通投标"}, {"n": 32, "lv": "红线", "cat": "诚信类", "name": "串通投标情形", "std": "文件异常一致、报价呈规律性差异、委托同一单位或个人办理投标事宜等"}, {"n": 33, "lv": "红线", "cat": "诚信类", "name": "弄虚作假", "std": "伪造证书、虚构业绩、虚假承诺、伪造印章或签名"}, {"n": 1, "lv": "红线", "cat": "资格性", "name": "营业执照", "std": "未提供、已过期、经营范围不含招标内容、三证合一信息不一致"}, {"n": 2, "lv": "红线", "cat": "资格性", "name": "资质证书", "std": "资质类别/等级不满足招标公告要求，或证书过期、未年审"}, {"n": 3, "lv": "红线", "cat": "资格性", "name": "安全生产许可证", "std": "未提供、过期或被暂扣（建安类项目必备）"}, {"n": 4, "lv": "红线", "cat": "资格性", "name": "项目经理注册建造师证", "std": "专业/等级不符、注册单位非本单位、未按要求提供续期页"}, {"n": 5, "lv": "红线", "cat": "资格性", "name": "项目经理安全考核B证", "std": "未提供或过期；与建造师证姓名不一致"}, {"n": 6, "lv": "红线", "cat": "资格性", "name": "专职安全员C证", "std": "数量不满足资质要求或证书过期"}, {"n": 7, "lv": "红线", "cat": "资格性", "name": "技术负责人职称证", "std": "职称专业/等级不满足招标文件规定（如要求高级工程师）"}, {"n": 10, "lv": "红线", "cat": "资格性", "name": "联合体协议", "std": "联合体投标未附共同投标协议，或职责分工不明确"}, {"n": 11, "lv": "红线", "cat": "资格性", "name": "投标保证金", "std": "未提交、金额不足、到账超时、形式不符、非基本账户转出（招标文件有要求时）"}, {"n": 12, "lv": "红线", "cat": "资格性", "name": "失信与黑名单", "std": "被列入失信被执行人、经营异常、建设市场黑名单、被暂停投标资格"}, {"n": 13, "lv": "红线", "cat": "资格性", "name": "行贿犯罪记录", "std": "未按要求提供无行贿犯罪记录承诺/查询结果"}, {"n": 25, "lv": "高", "cat": "响应性", "name": "低于成本报价", "std": "报价明显低于其他投标且不能合理说明或提供证明"}, {"n": 26, "lv": "高", "cat": "响应性", "name": "报价一致性", "std": "大小写金额不一致、单位错误、投标函与清单汇总金额不一致"}, {"n": 27, "lv": "高", "cat": "响应性", "name": "不可竞争费用", "std": "规费、税金、安全文明施工费未按招标文件规定计取；改动暂列金额、暂估价"}, {"n": 18, "lv": "高", "cat": "形式性", "name": "正副本份数与标识", "std": "份数不足、正副本标识错误、电子版格式不符（如要求可编辑版）"}, {"n": 34, "lv": "高", "cat": "诚信类", "name": "以他人名义投标", "std": "挂靠、借用资质、租借证书"}, {"n": 8, "lv": "高", "cat": "资格性", "name": "财务审计报告", "std": "未提供近三年审计报告，或资产负债率超招标文件限制"}, {"n": 9, "lv": "高", "cat": "资格性", "name": "纳税与社保证明", "std": "未按期限提供；社保人数不满足要求"}, {"n": 44, "lv": "高", "cat": "资格性", "name": "外地企业备案", "std": "未按项目所在地要求办理进鲁/进市备案或信息登记"}, {"n": 40, "lv": "中", "cat": "响应性", "name": "农民工工资与社保承诺", "std": "未提交工资支付保障承诺、未开设专户承诺"}, {"n": 41, "lv": "中", "cat": "响应性", "name": "质量与安全承诺", "std": "未响应质量保修期、安全生产标准化目标、环保措施承诺"}, {"n": 35, "lv": "中", "cat": "形式性", "name": "字迹与装订", "std": "关键字迹模糊无法辨认、缺页、倒页、装订散落"}, {"n": 36, "lv": "中", "cat": "形式性", "name": "目录与页码", "std": "未按招标文件要求编制目录、页码不连续或缺失"}, {"n": 37, "lv": "中", "cat": "形式性", "name": "法人授权委托书", "std": "被授权人非本单位人员、授权期限过期、未附双方身份证复印件"}, {"n": 42, "lv": "中", "cat": "形式性", "name": "投标保证金退还信息", "std": "未附开户许可证/基本存款账户信息、退保账户信息错误"}, {"n": 43, "lv": "中", "cat": "形式性", "name": "文件份数与电子版", "std": "要求提供电子版U盘/光盘而未提供或格式不符"}, {"n": 45, "lv": "中", "cat": "形式性", "name": "开标出席与证件", "std": "法定代表人或授权代表未按时到场、未携带有效身份证件（现场开标要求时）"}, {"n": 38, "lv": "中", "cat": "资格性", "name": "业绩证明材料", "std": "业绩规模/时间不满足，或缺少中标通知书、合同、竣工验收证明任一关键件"}, {"n": 39, "lv": "中", "cat": "资格性", "name": "机械设备承诺", "std": "自有设备无发票/购置证明，租赁设备无租赁协议"}];
+var KEY='bid_risk_v1';
+var st=JSON.parse(localStorage.getItem(KEY) || '{}');
+var extra=JSON.parse(localStorage.getItem(KEY+'_x') || '[]');
+var LVN={r:'红线',h:'高危',m:'一般'};
+function lvc(l){return l==='红线'?'r':(l==='高'?'h':'m');}
+function save(){localStorage.setItem(KEY,JSON.stringify(st));localStorage.setItem(KEY+'_x',JSON.stringify(extra));}
+function render(){
+  var box=document.getElementById('list');box.innerHTML='';
+  var last=null;
+  var all=DATA.concat(extra.map(function(x){return {n:x.k,lv:'红线',cat:'自定义',name:x.k,std:'你自己加的专用条款'};}));
+  all.forEach(function(it){
+    var c=lvc(it.lv);
+    if(c!==last){last=c;
+      var h=document.createElement('div');h.className='hd';
+      h.textContent=(c==='r'?'🔴 红线项 —— 中一条就废标':(c==='h'?'🟠 高危项 —— 常被拿来否决':'⚪ 一般项 —— 能补就补'));
+      box.appendChild(h);}
+    var v=st[it.n]||'';
+    var d=document.createElement('div');
+    d.className='it'+(v==='no'?' bad':(v==='skip'?' skip':''));
+    d.innerHTML='<div class="top"><span class="lv '+c+'">'+(it.lv==='红线'?'红线':it.lv)+'</span>'
+      +'<span class="nm">'+esc(it.cat)+' · '+esc(it.name)+'</span></div>'
+      +(it.std?'<div class="std">'+esc(it.std)+'</div>':'')
+      +'<div class="op">'
+      +'<button data-k="'+it.n+'" data-v="ok" class="'+(v==='ok'?'on':'')+'">✓ 没问题</button>'
+      +'<button data-k="'+it.n+'" data-v="no" class="'+(v==='no'?'on no':'')+'">✗ 有问题</button>'
+      +'<button data-k="'+it.n+'" data-v="skip" class="'+(v==='skip'?'on sk':'')+'">— 不适用</button>'
+      +'</div>';
+    box.appendChild(d);
+  });
+  document.getElementById('tot').textContent=all.length;
+  box.querySelectorAll('.op button').forEach(function(b){
+    b.onclick=function(){var k=b.getAttribute('data-k'),v=b.getAttribute('data-v');
+      if(st[k]===v){delete st[k];}else{st[k]=v;}save();render();};
+  });
+  refresh(all);
+}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
+function refresh(all){
+  var dn=0,rd=0,hg=0,bad=[],hb=[];
+  all.forEach(function(it){
+    var v=st[it.n];if(v)dn++;
+    if(v==='no'){if(it.lv==='红线'){rd++;bad.push(it.name);}else if(it.lv==='高'){hg++;hb.push(it.name);}}
+  });
+  document.getElementById('dn').textContent=dn;
+  document.getElementById('rd').textContent=rd;
+  document.getElementById('hg').textContent=hg;
+  document.getElementById('bar').style.width=(all.length?dn/all.length*100:0)+'%';
+  var m=document.getElementById('msg');
+  if(rd>0){m.className='msg red';
+    m.innerHTML='🔴 <b>有 '+rd+' 条红线没过，现在投就是废标</b>，先补这几条：<ul class="risk">'
+      +bad.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>'
+      +(hg?'<div style="margin-top:6px">另有 '+hg+' 条高危：'+esc(hb.join('、'))+'</div>':'');}
+  else if(dn===all.length){m.className='msg green';
+    m.innerHTML='✅ <b>45 项全过</b>，这份可以投了'+(hg?'（仍有 '+hg+' 条高危，建议再确认）':'');}
+  else{m.className='msg';m.textContent='还有 '+(all.length-dn)+' 条没核，核完才准。';}
+  // 结论出来的那一刻才给出口（全绿时不推销，避免"工具用完还硬卖"引起反感）
+  var dc=document.getElementById('dyncta');
+  var XL='<a href="https://www.goofish.com/item?id=1084295435400" target="_blank" rel="noopener">'
+        +'45 项可编辑 Excel 版 · 带判定栏+证据栏 · 拍下自动发货 →</a>';
+  var SV='<a href="https://www.goofish.com/item?id=1087170587415" target="_blank" rel="noopener">'
+        +'发标书 .docx 给我 · 机器逐条扫 · 24h 出分级清单+HTML报告 →</a>';
+  if(rd>0){dc.style.display='block';
+    dc.innerHTML='<b>这 '+rd+' 条得改文件或补证据</b>，开标前留不下依据等于没改。'
+      +(hg?'另有 '+hg+' 条高危，同样要留痕。':'')+'把你这份 .docx 发我，机器直接告诉你命中在第几页：'+SV
+      +'<br>自己逐条填也行：'+XL;}
+  else if(dn===all.length&&hg>0){dc.style.display='block';
+    dc.innerHTML='红线都过了，剩 <b>'+hg+' 条高危</b>——不一定废标，但常被扣分、被质疑。'
+      +'把依据逐条记下来，问的时候拿得出：'+XL;}
+  else{dc.style.display='none';dc.innerHTML='';}
+}
+document.getElementById('rst').onclick=function(){if(confirm('清空所有勾选？')){st={};save();render();}};
+document.getElementById('prt').onclick=function(){window.print();};
+document.getElementById('ad').onclick=function(){
+  var i=document.getElementById('ni'),v=(i.value||'').trim();
+  if(!v)return;
+  if(extra.indexOf(v)<0){extra.push(v);save();}
+  i.value='';render();};
+render();
+</script></body></html>

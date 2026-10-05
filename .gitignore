@@ -1,0 +1,9 @@
+# 商品交付物绝对不许进公开仓库（files/ 是卖的东西）
+files/
+*.zip
+*.docx
+*.xlsx
+*.pptx
+*.pdf
+sitemap.xml
+*.bak*

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工程资料工具包 | 投标资料24件 · 简历60套 · Excel60张 · PPT60套 可编辑电子资料</title>
+<meta name="description" content="工程人 & 职场人实用电子资料，全部 Word/Excel 可编辑、下载即用：工程投标资料全套 24 件（废标红线核查、清单复核、施工组织设计、安全台账、竣工归档、签证索赔、评标响应、资格审查）；Excel 表格模板 60 张（记账、办公、学习、理财、健康、经营）；PPT 模板 60 套（10 主题 × 6 配色，含年终总结、工作汇报、竞聘演讲、毕业答辩）。">
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1a1d24; --sub:#5b6472;
+    --line:#e6e9ef; --brand:#1f5fd0; --brand-soft:#eaf1fd;
+    --warn:#c0392b; --warn-soft:#fdecea; --ok:#1e8e5a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px}
+  header{background:linear-gradient(135deg,#1f5fd0,#2b7fd8);color:#fff;padding:44px 0 38px}
+  header h1{font-size:28px;line-height:1.4;font-weight:700;letter-spacing:.5px}
+  header p{margin-top:10px;font-size:15px;opacity:.92}
+  .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+    border-radius:20px;padding:4px 14px;font-size:13px;margin-bottom:14px}
+  section{padding:34px 0}
+  h2{font-size:20px;margin-bottom:6px;padding-left:12px;border-left:4px solid var(--brand)}
+  .lead{color:var(--sub);font-size:14px;margin-bottom:18px}
+  .pain{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .pain li{list-style:none;padding:7px 0 7px 22px;position:relative;font-size:14.5px;color:#333}
+  .pain li:before{content:"✕";position:absolute;left:0;color:var(--warn);font-weight:700}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    display:flex;flex-direction:column;transition:.2s}
+  .card:hover{box-shadow:0 6px 20px rgba(31,95,208,.12);transform:translateY(-2px)}
+  .card img{width:100%;display:block;background:#eef1f6}
+  .card .body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+  .tag{display:inline-block;background:var(--brand-soft);color:var(--brand);border-radius:5px;
+    font-size:12px;padding:2px 8px;margin-bottom:8px;align-self:flex-start}
+  .tag.hot{background:var(--warn-soft);color:var(--warn)}
+  .card h3{font-size:16.5px;line-height:1.5;margin-bottom:8px}
+  .card ul{margin:8px 0 12px}
+  .card li{list-style:none;font-size:13.5px;color:var(--sub);padding:3px 0 3px 16px;position:relative}
+  .card li:before{content:"·";position:absolute;left:4px;color:var(--brand);font-weight:700}
+  .price{font-size:22px;color:var(--warn);font-weight:700;margin-top:auto}
+  .price small{font-size:13px;color:var(--sub);font-weight:400;margin-left:6px}
+  .btn{display:block;text-align:center;background:var(--brand);color:#fff;text-decoration:none;
+    border-radius:9px;padding:11px 0;font-size:15px;font-weight:600;margin-top:12px}
+  .btn.ghost{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+  .note{background:#fffbe9;border:1px solid #f2e3b3;border-radius:12px;padding:16px 20px;font-size:13.5px;color:#6b5a22}
+  .steps{counter-reset:s;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .steps li{list-style:none;counter-increment:s;position:relative;padding:8px 0 8px 34px;font-size:14.5px}
+  .steps li:before{content:counter(s);position:absolute;left:0;top:8px;width:22px;height:22px;
+    background:var(--brand);color:#fff;border-radius:50%;font-size:12px;text-align:center;line-height:22px;font-weight:700}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
+    border-radius:12px;overflow:hidden;font-size:14px}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:#f2f5f9;font-weight:600;font-size:13.5px}
+  tr:last-child td{border-bottom:none}
+  .center{text-align:center}
+  footer{background:#1a1d24;color:#9aa4b2;padding:26px 0;font-size:12.5px;text-align:center;line-height:1.9}
+  .dl{display:inline-block;background:var(--ok);color:#fff;text-decoration:none;border-radius:8px;
+    padding:9px 20px;font-size:14.5px;font-weight:600}
+  @media(max-width:600px){header h1{font-size:22px}.grid{grid-template-columns:1fr}}
+</style>
+
+<!-- ===== SEO / 分享卡片 / 结构化数据（2026-09-25 补） ===== -->
+<meta name="keywords" content="PPT模板,年终总结PPT,工作汇报PPT,工作汇报PPT,竞聘演讲PPT,投标资料,工程投标资料,标书模板,废标红线核查表,施工组织设计,工程量清单复核表,安全资料台账,竣工归档资料,签证索赔,评标办法响应表,资格审查清单,简历模板,个人简历模板,Excel表格模板,记账表格,自动发货,可编辑,下载即用">
+<meta name="robots" content="index,follow,all">
+<meta name="author" content="工程资料工具包">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://bid-toolkit.app.workbuddy.host/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="工程资料工具包">
+<meta property="og:title" content="工程资料工具包 | 投标资料24件 · 简历60套 · Excel60张 · PPT60套 可编辑电子资料">
+<meta property="og:description" content="工程人 & 职场人实用电子资料，全部 Word/Excel 可编辑、下载即用：工程投标资料全套 24 件（废标红线核查、清单复核、施工组织设计、安全台账、竣工归档、签证索赔、评标响应、资格审查）；Excel 表格模板 60 张（记账、办公、学习、理财、健康、经营）；PPT 模板 60 套（10 主题 × 6 配色，含年终总结、工作汇报、竞聘演讲、毕业答辩）。">
+<meta property="og:url" content="https://bid-toolkit.app.workbuddy.host/">
+<meta property="og:image" content="https://bid-toolkit.app.workbuddy.host/img/r1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="工程资料工具包 | 投标资料24件 · 简历60套 · Excel60张 · PPT60套 可编辑电子资料">
+<meta name="twitter:description" content="工程人 & 职场人实用电子资料，全部 Word/Excel 可编辑、下载即用：工程投标资料全套 24 件（废标红线核查、清单复核、施工组织设计、安全台账、竣工归档、签证索赔、评标响应、资格审查）；Excel 表格模板 60 张（记账、办公、学习、理财、健康、经营）；PPT 模板 60 套（10 主题 × 6 配色，含年终总结、工作汇报、竞聘演讲、毕业答辩）。">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "工程资料工具包 · 可编辑电子资料合集",
+  "description": "工程人 & 职场人实用电子资料，全部 Word/Excel 可编辑、下载即用：工程投标资料全套 24 件（废标红线核查、清单复核、施工组织设计、安全台账、竣工归档、签证索赔、评标响应、资格审查）；Excel 表格模板 60 张（记账、办公、学习、理财、健康、经营）；PPT 模板 60 套（10 主题 × 6 配色，含年终总结、工作汇报、竞聘演讲、毕业答辩）。",
+  "url": "https://bid-toolkit.app.workbuddy.host/",
+  "numberOfItems": 3,
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1,
+     "item": {"@type": "Product", "name": "工程投标资料全套24件",
+              "description": "废标红线核查表、投标全流程自查、人员证件台账、编制框架与排版规范、废标风险审查样例、资格审查清单、评标办法响应表、施工组织设计要素库、技术标要素清单、全案范文集、评分索引表、施工方案范本集、方案自查表、进度横道图、偏差台账、报价决策工具包、文书模板、清单复核表、安全资料台账、竣工归档清单、签证索赔模板集等 24 件",
+              "category": "工程资料"}},
+    {"@type": "ListItem", "position": 2,
+     "item": {"@type": "Product", "name": "简历模板60套（12行业×5版式）",
+              "description": "建筑工程、工程造价、市政、公路、水利、机电、装饰、财务、行政人事、销售、教师、医护 12 个行业 × 经典单栏/双栏/技能优先/项目导向/极简一页 5 种版式，每套含岗位关键词、经历写法示范与证书建议",
+              "category": "求职简历"}},
+    {"@type": "ListItem", "position": 3,
+     "item": {"@type": "Product", "name": "Excel表格模板60张（六大场景）",
+              "description": "家庭与生活10张、工作与办公20张、学习与成长10张、财务与理财10张、健康与运动8张、经营与电商2张，含表头、示例与公式说明",
+              "category": "办公表格"}}
+  ]
+}
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="badge">工程招投标 · 一线经验整理 · 14 套工具</span>
+    <h1>投标资料工具包<br/>把「被废标」「报价失误」「文书出错」挡在开标之前</h1>
+    <p>废标红线 · 成本测算 · 报价策略 · 常用文书 · 清单复核 · 施组要素 · 代做审查</p>
+    <p style="margin-top:14px"><a href="store.html" style="display:inline-block;background:#fff;color:#1f5fd0;font-weight:700;text-decoration:none;padding:9px 18px;border-radius:8px;font-size:15px">在售清单 27 件 · 价格与说明 →</a>
+      <a href="guides/index.html" style="display:inline-block;margin-left:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff;font-weight:700;text-decoration:none;padding:9px 18px;border-radius:8px;font-size:15px">投标实战指南 14 篇</a></p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>这些坑，每年都在重复发生</h2>
+    <ul class="pain">
+      <li>保证金到账晚了半天，资格审查直接不通过</li>
+      <li>工程量清单改了单位，商务标没跟着改，报价作废</li>
+      <li>报价没做成本测算，中了标才发现亏本</li>
+      <li>授权委托书没盖章、或授权书过期</li>
+      <li>证件有效期差 3 天，开标当天才发现过期</li>
+      <li>技术标写了 80 页，评分要素一个没在标题上体现</li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="card" style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;border:1px solid #d8c48a;background:linear-gradient(180deg,#fffdf6,#fff8e6)">
+      <div class="body" style="flex:1 1 340px">
+        <span class="tag hot">唯一人工服务 · 24 小时内出报告</span>
+        <h3 style="margin:8px 0 6px">标书废标风险体检｜你把文件发来，机器逐条出报告</h3>
+        <ul style="margin:0 0 10px">
+          <li>按废标红线逐条核：资格 / 形式 / 响应 / 电子标</li>
+          <li>标出高危项并给整改位置，不是给一份清单让你自己找</li>
+          <li>暗标排版、占位符、目录页码、证件有效期一并扫</li>
+          <li>文件只用于本次体检，出完报告即删</li>
+        </ul>
+        <div class="price">¥29.9 <small>发文件 → 24 小时内出报告</small></div>
+        <a class="btn" href="https://www.goofish.com/item?id=1087170587415" target="_blank" rel="noopener">去闲鱼拍下 · 发文件</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>全部工具（14 套）</h2>
+    <p class="lead">全部为 Excel / Word 电子版，可编辑，下载即用。</p>
+    <div class="grid">
+
+      <div class="card">
+        <img src="img/l1.png" alt="废标红线核查表">
+        <div class="body">
+          <span class="tag hot">单表 · 最受欢迎</span>
+          <h3>投标废标红线核查表（45项）</h3>
+          <ul>
+            <li>资格 / 形式 / 响应 / 电子标 / 诚信 五类</li>
+            <li>红线项标红，高中风险分级</li>
+            <li>带下拉判定，打印随标书走</li>
+          </ul>
+          <div class="price">¥0.9 <small>Excel 电子版 · 可编辑</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1084295435400" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/l2.png" alt="投标资料合规包">
+        <div class="body">
+          <span class="tag hot">全套 · 最划算</span>
+          <h3>投标资料合规包（5件套）</h3>
+          <ul>
+            <li>45项废标红线核查表</li>
+            <li>18节点日程 + 21个得分点自查</li>
+            <li>证件台账（填有效期自动预警）</li>
+            <li>编制框架与排版规范 + 审查样例</li>
+          </ul>
+          <div class="price">¥14.9 <small>一次配齐，长期复用</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1086249693204" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/p1.png" alt="投标报价决策工具包">
+        <div class="body">
+          <span class="tag">报价利器</span>
+          <h3>投标报价决策工具包</h3>
+          <ul>
+            <li>成本测算：七项费用逐项算清成本底价</li>
+            <li>策略试算：下浮率 / 评标基准价 / 偏差率</li>
+            <li>投标台账：历次留底，攒出本地行情</li>
+          </ul>
+          <div class="price">¥12.9 <small>29个自动公式</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1086326705554" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/p2.png" alt="投标文书模板">
+        <div class="body">
+          <span class="tag">刚需文书</span>
+          <h3>投标文件常用文书模板（10份）</h3>
+          <ul>
+            <li>法人证明 / 授权委托书 / 投标函</li>
+            <li>各类承诺书 / 联合体协议</li>
+            <li>每份附最常见出错点提示</li>
+          </ul>
+          <div class="price">¥19.9 <small>Word 填空即用</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1084371707181" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/p3.png" alt="工程量清单复核表">
+        <div class="body">
+          <span class="tag">防漏项</span>
+          <h3>工程量清单复核表</h3>
+          <ul>
+            <li>清单量逐项复核，偏差率自动算</li>
+            <li>常见漏项 16 类：措施费/便道/降排水…</li>
+            <li>报价前十分钟过一遍，少亏一大块</li>
+          </ul>
+          <div class="price">¥9.9 <small>Excel · 含公式</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1087373488872" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/p4.png" alt="施工组织设计要素库">
+        <div class="body">
+          <span class="tag">技术标配</span>
+          <h3>施工组织设计编制要素库</h3>
+          <ul>
+            <li>11 章逐章要素 + 公路专业方案要点</li>
+            <li>必附图表清单 + 危大工程识别</li>
+            <li>扣分点 TOP15 + 编前 5 分钟自查</li>
+          </ul>
+          <div class="price">¥19.9 <small>Word + Excel 两件套</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1087392192358" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/b4.png" alt="标书编制全案范文集">
+        <div class="body">
+          <span class="tag hot">旗舰 · 范文</span>
+          <h3>标书编制全案范文集</h3>
+          <ul>
+            <li>脱敏真实技术标 / 商务标范文</li>
+            <li>评分索引表（要素→页码）</li>
+            <li>10 个致命错误 before/after 对照</li>
+          </ul>
+          <div class="price">¥9.9 <small>照着改就少丢分</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1086437865710" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/b5.png" alt="工程安全资料台账模板集">
+        <div class="body">
+          <span class="tag">安全必备</span>
+          <h3>工程安全资料台账模板集</h3>
+          <ul>
+            <li>13 类安全资料总表，逐项勾</li>
+            <li>安全技术交底范本</li>
+            <li>隐患整改闭环 + 应急预案骨架</li>
+          </ul>
+          <div class="price">¥19.9 <small>建筑/市政/公路通用</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1086460485531" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/b6.png" alt="竣工归档资料清单与样表">
+        <div class="body">
+          <span class="tag">竣工收尾</span>
+          <h3>竣工归档资料清单与样表</h3>
+          <ul>
+            <li>按卷竣工归档总清单</li>
+            <li>检验批 / 隐蔽验收台账</li>
+            <li>材料报验 + 竣工图 / 总结范本</li>
+          </ul>
+          <div class="price">¥19.9 <small>归档不漏项</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1084561319456" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/b7.png" alt="工程签证索赔模板集">
+        <div class="body">
+          <span class="tag hot">做了活·要回钱</span>
+          <h3>工程签证索赔模板集</h3>
+          <ul>
+            <li>标准现场签证单范本</li>
+            <li>费用 / 工期索赔报告范本</li>
+            <li>证据清单 + 20 个常见签证点</li>
+          </ul>
+          <div class="price">¥19.9 <small>漏一处=丢钱</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1087748020547" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/b8.png" alt="施工进度计划与横道图模板">
+        <div class="body">
+          <span class="tag">进度管控</span>
+          <h3>施工进度计划与横道图模板</h3>
+          <ul>
+            <li>横道图（甘特图）可调模板</li>
+            <li>工期计算 + 关键线路要点</li>
+            <li>进度汇报周报 / 月报范本</li>
+          </ul>
+          <div class="price">¥19.9 <small>计划 vs 实际</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1085667762691" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/l3.png" alt="标书代做服务">
+        <div class="body">
+          <span class="tag">人工服务</span>
+          <h3>标书代做 / 废标风险审查</h3>
+          <ul>
+            <li>技术标（施组）编制与排版</li>
+            <li>投标前逐条审查，出书面风险报告</li>
+            <li>按项目难度报价，先看资料后定价</li>
+          </ul>
+          <div class="price">¥9.9 <small>起 · 按项目议价</small></div>
+          <a class="btn ghost" href="https://www.goofish.com" target="_blank" rel="noopener">闲鱼咨询报价</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>办公 · 求职 · 汇报资料</h2>
+    <p class="lead">除工程投标资料外，还有高频办公、求职与汇报品类：全部一次购买、永久可用、拍下即发。</p>
+    <div class="grid">
+      <div class="card">
+        <img src="img/r6.png" alt="Excel 表格模板 60 张（六大场景）">
+        <div class="body">
+          <span class="tag hot">办公常用</span>
+          <h3>Excel 表格模板 60 张（六大场景）</h3>
+          <ul><li>家庭与生活 10 张 / 工作与办公 20 张</li><li>学习与成长 10 张 / 财务与理财 10 张</li><li>健康与运动 8 张 / 经营与电商 2 张</li></ul>
+          <div class="price">¥1.0 <small>小商家与职场通用 · 单个模板不到 2 分钱</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1085026911492" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="img/s1.png" alt="本地部署 AI 写标书手册（数据不外泄 · 离线运行）">
+        <div class="body">
+          <span class="tag hot">新上架 · 工程投标</span>
+          <h3>本地部署 AI 写标书手册（数据不外泄）</h3>
+          <ul><li>全程离线运行，标书内容不出本机</li><li>招标文件解读 + 技术标逐章成稿提示</li><li>含模型选择与显存占用对照表</li></ul>
+          <div class="price">¥14.9 <small>Word 电子版 · 48 小时内发布</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1089912608508" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="img/s2.png" alt="电子标文件批量处理手册（扫描件 · 压缩 · 暗标 · 书签）">
+        <div class="body">
+          <span class="tag hot">新上架 · 电子标刚需</span>
+          <h3>电子标文件批量处理手册</h3>
+          <ul><li>扫描件转可检索 PDF / 批量压缩到达标体积</li><li>暗标脱敏：批量去名称、留痕清理</li><li>书签与目录页码一键规整</li></ul>
+          <div class="price">¥9.9 <small>Word 电子版 · 48 小时内发布</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1086902835827" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="img/s3.png" alt="简历网申通关手册（机读结构 · 关键词 · 排版禁忌）">
+        <div class="body">
+          <span class="tag hot">新上架 · 求职</span>
+          <h3>简历网申通关手册</h3>
+          <ul><li>机读结构：让简历过机器初筛</li><li>关键词对照（按岗位补齐缺的词）</li><li>排版禁忌清单 + 投递前自查</li></ul>
+          <div class="price">¥9.9 <small>Word 电子版 · 24 小时内发布</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1090018896412" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="img/r8.png" alt="PPT 模板 60 套（10 主题 × 6 配色）">
+        <div class="body">
+          <span class="tag hot">汇报刚需</span>
+          <h3>PPT 模板 60 套（10 主题 × 6 配色）</h3>
+          <ul><li>主题：年终总结 / 工作汇报 / 项目复盘 / 项目复盘 / 商业计划书</li><li>产品发布 / 培训课件 / 竞聘演讲 / 毕业答辩 / 安全生产培训</li><li>每套 13 页，每节带写作提示，改字就能用</li></ul>
+          <div class="price">¥29.9 <small>10 主题 · 6 配色 · 共 780 页</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1085586190329" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="img/all.png" alt="工程投标资料全套 24 件">
+        <div class="body">
+          <span class="tag hot">超值打包</span>
+          <h3>工程投标资料全套 24 件</h3>
+          <ul><li>01 资格与合规 7 件（废标红线 / 资格审查 / 评标响应…）</li><li>02 技术标与施工 8 件（施组 / 技术标 / 方案 / 横道图…）</li><li>03 商务标与报价 3 件 04 竣工与台账 6 件</li></ul>
+          <div class="price">¥9.5 <small>单件合计 240 元</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1085689234262" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="img/g1.png" alt="工程合同与协议范本20份">
+        <div class="body">
+          <span class="tag hot">新上架</span>
+          <h3>工程合同与协议范本20份</h3>
+          <ul>
+            <li>总包 / 专业分包 / 劳务分包 / 材料采购 / 机械租赁</li>
+            <li>周转材料 / 安全生产协议 / 保密 / 质量保修 / 竣工结算</li>
+            <li>签证索赔 / 工资代发 / 临时用工 / 居间 / 保险 / 检测 …</li>
+          </ul>
+          <div class="price">¥1.9 <small>每份含条款要点与签约自查</small></div>
+          <a class="btn" href="https://www.goofish.com/item?id=1087014033838" target="_blank" rel="noopener">去闲鱼拍下</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="note" style="background:#eaf1fd;border-color:#cfe0fb">
+      <strong>需要按你的项目定制编制？</strong>除标准资料外，我们也直接承接：
+      <strong>技术标（施工组织设计）编制、商务标编制与排版、投标前废标风险审查、工程量清单复核、
+      安全与竣工资料整理</strong>。起做价 300 元，按项目难度与工期报价，先看招标文件再谈。
+      需要的话在闲鱼聊天里直接说项目情况即可。
+    </div>
+  </div>
+</section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>工程投标实战指南（免费阅读）</h2>
+    <p class="lead">把实务中反复踩到的坑写成了 14 篇免费指南：保证金退还、资格审查清单、清单复核、评标办法响应、施工组织设计、竣工归档、签证索赔。看完就知道该准备什么、容易漏什么。</p>
+    <div class="grid">
+      <div class="card"><div class="body">
+        <h3><a href="guides/bid-deposit-refund.html">投标保证金怎么退？流程、时限与 6 个常见卡点</a></h3>
+        <p class="lead">谁退、什么时候退、要什么材料，以及最常卡住的 6 个环节。</p>
+      </div></div>
+      <div class="card"><div class="body">
+        <h3><a href="guides/pre-bid-48h-checklist.html">开标前 48 小时终审清单：23 项逐条核对</a></h3>
+        <p class="lead">资格性 / 符合性 / 响应性 / 电子标四组，逐条打勾，别在临门一脚废标。</p>
+      </div></div>
+      <div class="card"><div class="body">
+        <h3><a href="guides/boq-review.html">工程量清单复核怎么做：偏差率与 16 类常见漏项</a></h3>
+        <p class="lead">先总后分、先大后小；偏差率怎么算、哪些漏项最常见。</p>
+      </div></div>
+      <div class="card"><div class="body">
+        <h3><a href="guides/construction-organization-design.html">施工组织设计怎么写：7 步框架与 12 个被退回原因</a></h3>
+        <p class="lead">标准章节框架 + 监理最常退回的 12 个原因 + 让评委加分的细节。</p>
+      </div></div>
+    </div>
+    <p style="margin-top:18px"><a class="btn" href="guides/index.html">查看全部 14 篇指南 →</a></p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>不想自己核？把文件发我，机器替你扫</h2>
+    <p class="lead">上面这些都是自己动手的。要是你手上已经有一份做好的投标文件，直接把 <b>.docx</b> 发我：机器逐条扫完，24 小时内发你<b>分级问题清单 ＋ HTML 报告</b>，每条都带证据（命中了哪个词、哪个值）。不用装软件，不看你的报价。</p>
+    <div style="max-width:820px;margin:14px auto 0;padding:16px 18px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.06);font-size:14px;line-height:1.8;color:#1f2937">
+      <h3 style="margin:0 0 8px;font-size:16px">标书废标风险体检（发文件 · 机器出报告）</h3>
+      <ul style="margin:0 0 12px;padding-left:20px">
+        <li>暗标违规：露出单位名 / 页眉页脚有内容 / 出现人名 / 疑似水印</li>
+        <li>排版违规：字体不是仿宋_GB2312 / 字号不统一 / 页边距不合招标文件</li>
+        <li>内容缺失：投标函 / 签字盖章位 / 保证金 / 工期 / 质量 / 报价大写</li>
+        <li>读不出来的判 UNKNOWN，<b>绝不计入违规数</b>——不把"读不到"说成"没问题"</li>
+      </ul>
+      <a class="btn" href="https://www.goofish.com/item?id=1087170587415" target="_blank" rel="noopener">去闲鱼拍下 · 发文件</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+    <div class="wrap">
+      <h2>免费用在线工具（不用注册、不用下载）</h2>
+    <p class="lead">下面 4 个工具在浏览器里直接跑，不用装任何东西，也不收任何费用。做标书前先过一遍，比开标后被废了强。</p>
+    <div class="grid">
+      <div class="card"><div class="body">
+        <span class="tag hot">最常用</span>
+        <h3><a href="bid-risk-check.html">投标文件废标红线自查器 · 45 项</a></h3>
+        <ul><li>逐条勾选，实时告诉你哪条会废标</li><li>可加你自己那份招标文件的专用条款</li><li>可打印 / 存 PDF 带去开标现场</li></ul>
+        <a class="btn" href="bid-risk-check.html">立即免费自查 →</a>
+      </div></div>
+      <div class="card"><div class="body">
+        <span class="tag">报价</span>
+        <h3><a href="price-calc.html">投标报价测算器</a></h3>
+        <ul><li>按评标办法算出你的价格分</li><li>报价前先看清降多少、得几分</li><li>支持最低价 / 合理均价基准</li></ul>
+        <a class="btn" href="price-calc.html">算一下价格分 →</a>
+      </div></div>
+      <div class="card"><div class="body">
+        <span class="tag">证照</span>
+        <h3><a href="certcheck.html">证照有效期提醒器</a></h3>
+        <ul><li>算清除投标那天证书是不是还有效</li><li>避开「证书过期 1 天被废」这种低级错</li><li>一次性录入，结果当场出</li></ul>
+        <a class="btn" href="certcheck.html">查证照有效期 →</a>
+      </div></div>
+      <div class="card"><div class="body">
+        <span class="tag">自查</span>
+        <h3><a href="failcheck.html">废标自查打勾器（简版）</a></h3>
+        <ul><li>45 项精简打勾版，3 分钟过一遍</li><li>适合开标前最后一次快速复核</li><li>结果可直接打印</li></ul>
+        <a class="btn" href="failcheck.html">快速过一遍 →</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>怎么拿到文件</h2>
+    <ol class="steps">
+      <li>在闲鱼拍下对应宝贝</li>
+      <li>卖家在闲鱼聊天窗口把下载链接发给你</li>
+      <li>打开链接下载，Excel / Word 可自行修改</li>
+      <li>不会用可直接问，回复在闲鱼聊天里</li>
+    </ol>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>已购用户下载入口</h2>
+    <p class="lead">若你已在闲鱼拍下并收到提取说明，点下方按钮下载对应文件。</p>
+    <table>
+      <tr><th>文件</th><th>大小</th><th class="center">下载</th></tr>
+      <tr><td>标书制作零基础入门·废标避坑手册.docx</td><td>约 9 KB</td>
+        <td class="center"><a class="dl" href="files/bid-pitfall-handbook.docx" download>下载</a></td></tr>
+      <tr><td>标书排版与格式规范手册.docx</td><td>约 40 KB</td>
+        <td class="center"><a class="dl" href="files/paiban-handbook.docx" download>下载</a></td></tr>
+      <tr><td>电子标操作与避坑手册.docx</td><td>约 47 KB</td>
+        <td class="center"><a class="dl" href="files/ebid-handbook.docx" download>下载</a></td></tr>
+      <tr><td>AI辅助写标书实操手册.docx</td><td>约 39 KB</td>
+        <td class="center"><a class="dl" href="files/ai-bid-handbook.docx" download>下载</a></td></tr>
+      <tr><td>招标文件解读实战手册.docx</td><td>约 39 KB</td>
+        <td class="center"><a class="dl" href="files/jiedu-handbook.docx" download>下载</a></td></tr>
+      <tr><td>开标流程与现场应对手册.docx</td><td>约 47 KB</td>
+        <td class="center"><a class="dl" href="files/kaibiao-handbook.docx" download>下载</a></td></tr>
+      <tr><td>投标报价策略手册.docx</td><td>约 39 KB</td>
+        <td class="center"><a class="dl" href="files/baojia-handbook.docx" download>下载</a></td></tr>
+      <tr><td>工程结算实务手册.docx</td><td>约 48 KB</td>
+        <td class="center"><a class="dl" href="files/jiesuan-handbook.docx" download>下载</a></td></tr>
+      <tr><td>投标废标红线核查表（45项）.xlsx</td><td>约 12 KB</td>
+        <td class="center"><a class="dl" href="files/bid-redline-checklist.xlsx" download>下载</a></td></tr>
+      <tr><td>投标资料合规包（5件套）.zip</td><td>约 107 KB</td>
+        <td class="center"><a class="dl" href="files/bid-compliance-pack.zip" download>下载</a></td></tr>
+      <tr><td>投标报价决策工具包.xlsx</td><td>约 12 KB</td>
+        <td class="center"><a class="dl" href="files/quote-decision-toolkit.xlsx" download>下载</a></td></tr>
+      <tr><td>投标文件常用文书模板.docx（10份）</td><td>约 40 KB</td>
+        <td class="center"><a class="dl" href="files/bid-doc-templates.docx" download>下载</a></td></tr>
+      <tr><td>工程量清单复核表.xlsx</td><td>约 11 KB</td>
+        <td class="center"><a class="dl" href="files/boq-review-checklist.xlsx" download>下载</a></td></tr>
+      <tr><td>施工组织设计编制要素库.docx</td><td>约 43 KB</td>
+        <td class="center"><a class="dl" href="files/sod-element-library.docx" download>下载</a></td></tr>
+      <tr><td>技术标要素与图表清单.xlsx</td><td>约 12 KB</td>
+        <td class="center"><a class="dl" href="files/sod-element-checklist.xlsx" download>下载</a></td></tr>
+      <tr><td>工程安全资料台账模板集.zip</td><td>约 78 KB</td>
+        <td class="center"><a class="dl" href="files/safety-account-templates.zip" download>下载</a></td></tr>
+      <tr><td>竣工归档资料清单与样表.zip</td><td>约 76 KB</td>
+        <td class="center"><a class="dl" href="files/completion-archive.zip" download>下载</a></td></tr>
+      <tr><td>标书编制全案范文集.zip</td><td>约 118 KB</td>
+        <td class="center"><a class="dl" href="files/bid-model-essays.zip" download>下载</a></td></tr>
+      <tr><td>工程签证索赔模板集.zip</td><td>约 81 KB</td>
+        <td class="center"><a class="dl" href="files/variation-claim-templates.zip" download>下载</a></td></tr>
+      <tr><td>施工进度计划与横道图模板.zip</td><td>约 81 KB</td>
+        <td class="center"><a class="dl" href="files/schedule-gantt-templates.zip" download>下载</a></td></tr>
+
+      <tr><td>简历模板 480 套（12 行业 × 5 版式 × 8 配色）.zip</td><td>约 16.2 MB</td><td class="center"><a class="dl" href="files/resume-pack.zip" download>下载</a></td></tr>
+      <tr><td>简历场景专版（8 大专版）.zip</td><td>约 321 KB</td><td class="center"><a class="dl" href="files/resume-pro-scenes.zip" download>下载</a></td></tr>
+      <tr><td>Excel 表格模板 60 张（六大场景）.zip</td><td>约 359 KB</td><td class="center"><a class="dl" href="files/excel-templates-60.zip" download>下载</a></td></tr>
+      <tr><td>PPT 模板 60 套（10 主题 × 6 配色）.zip</td><td>约 2.3 MB</td><td class="center"><a class="dl" href="files/ppt-templates-60.zip" download>下载</a></td></tr>
+      <tr><td>工程投标资料全套 24 件.zip</td><td>约 533 KB</td><td class="center"><a class="dl" href="files/all-bid-materials.zip" download>下载</a></td></tr>
+      <tr><td>工程合同与协议范本 20 份.zip</td><td>约 750 KB</td><td class="center"><a class="dl" href="files/engineering-contracts-20.zip" download>下载</a></td></tr>
+      <tr><td>考公 AI 讲题 Skill · 25 专项合集.zip</td><td>约 76 KB</td><td class="center"><a class="dl" href="files/gongkao-mini-all.zip" download>下载</a></td></tr>
+    </table>
+    <p class="lead" style="margin-top:16px">免费在线工具：<a href="price-calc.html" style="color:var(--brand);font-weight:700">投标报价测算器</a>（输入各家报价与评分规则，自动算价格分与排名）｜<a href="failcheck.html" style="color:var(--brand);font-weight:700">废标自查打勾器</a>（45 项红线逐条打勾，进度自动保存）｜<a href="certcheck.html" style="color:var(--brand);font-weight:700">证照有效期提醒器</a>（证书临期分级预警，台账可导出）。数据均不上传。｜<a href="store.html" style="color:var(--brand);font-weight:700">在售清单 27 件（含价格）</a></p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="note">
+      <strong>使用说明：</strong>清单与模板为工程招投标行业通用经验整理，用于帮助投标人自查遗漏、辅助测算。
+      各项目招标文件的具体条款存在差异，<strong>最终以本项目招标文件及评标办法为准</strong>。
+      本套资料不代做证件、业绩材料，不承诺中标结果。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    投标资料工具包 · 工程招投标经验整理<br/>
+    交付形式为电子文档，虚拟商品一经下载不支持退换<br/>
+    <span style="opacity:.7">本页面仅提供资料展示与下载，交易在闲鱼平台完成</span>
+  </div>
+</footer>
+
+</body>
+</html>

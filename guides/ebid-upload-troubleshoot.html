@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>电子标上传失败、CA 锁识别不到、签章失败：开标前故障排查清单</title>
+<meta name="description" content="电子标最怕的不是文件不会做，而是开标当天传不上去：控件装不上、CA 锁读不到、签章报错、文件超限、解密超时。本文按环境层、文件层、平台层三层定位，给出逐项排查清单与 8 个高频故障的处理顺序。">
+<meta name="keywords" content="电子标上传失败,CA锁识别不到,电子签章失败,投标文件上传不了,CA证书驱动,投标文件解密失败,电子标开标流程,投标文件大小超限">
+<meta name="robots" content="index,follow,all">
+<link rel="canonical" href="https://bid-toolkit.app.workbuddy.host/guides/ebid-upload-troubleshoot.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子标上传失败、CA 锁识别不到、签章失败：开标前故障排查清单">
+<meta property="og:description" content="电子标最怕开标当天传不上去：控件装不上、CA 锁读不到、签章报错、文件超限、解密超时。按环境、文件、平台三层定位，附逐项排查清单。">
+<meta property="og:url" content="https://bid-toolkit.app.workbuddy.host/guides/ebid-upload-troubleshoot.html">
+<meta property="og:image" content="https://bid-toolkit.app.workbuddy.host/img/r1.png">
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--ink:#1b1f27;--sub:#5c6675;--line:#e7eaf0;--brand:#1f5fd0;--accent:#f2a900}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.85 -apple-system,"Microsoft YaHei",sans-serif}
+header{background:#12294a;color:#fff;padding:26px 0}
+header .in{max-width:820px;margin:0 auto;padding:0 20px}
+header a{color:#cfe0fb;text-decoration:none;font-size:14px}
+header h1{margin:10px 0 6px;font-size:26px;line-height:1.45}
+header p{margin:0;color:#bcd0ea;font-size:14px}
+main{max-width:820px;margin:0 auto;padding:26px 20px 60px}
+article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 26px 8px}
+h2{font-size:19px;margin:26px 0 10px;padding-left:12px;border-left:4px solid var(--accent)}
+p{margin:10px 0}
+ul{margin:8px 0 14px;padding-left:22px}
+li{margin:6px 0}
+.cta{margin:28px 0;background:#eef4ff;border:1px solid #cfe0fb;border-radius:12px;padding:18px 20px}
+.cta b{color:#12294a}
+.cta a{display:inline-block;margin-top:10px;background:var(--brand);color:#fff;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:700;font-size:15px}
+.faq{margin-top:26px;border-top:1px dashed var(--line);padding-top:8px}
+.faq h2{border-left-color:var(--brand)}
+.tips{background:#fffaf0;border:1px solid #f6e2b8;border-radius:10px;padding:12px 16px;margin:14px 0;font-size:15px}
+footer{max-width:820px;margin:0 auto;padding:0 20px 50px;color:var(--sub);font-size:13px}
+.grid{display:grid;grid-template-columns:1fr;gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card a{color:var(--brand);text-decoration:none;font-weight:700;font-size:17px}
+.card p{margin:6px 0 0;color:var(--sub);font-size:14px}
+.note{color:var(--sub);font-size:13px}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:15px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f2f5fa}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "电子标上传失败、CA 锁识别不到、签章失败：开标前故障排查清单", "description": "电子标最怕的不是文件不会做，而是开标当天传不上去：控件装不上、CA 锁读不到、签章报错、文件超限、解密超时。按环境层、文件层、平台层三层定位，给出逐项排查清单与 8 个高频故障的处理顺序。", "inLanguage": "zh-CN", "mainEntityOfPage": "https://bid-toolkit.app.workbuddy.host/guides/ebid-upload-troubleshoot.html", "author": {"@type": "Organization", "name": "工程资料工具包"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "CA 锁插上没反应，第一步该查什么？", "acceptedAnswer": {"@type": "Answer", "text": "先分层：换一个 USB 口（优先机箱后置口）、换一台电脑、换一根数据线，确认是锁本身、还是驱动与浏览器环境问题；再看客户端里能否读到证书信息。能读到证书但平台识别不到，多半是浏览器或控件问题；完全读不到，多半是驱动或锁硬件问题。"}}, {"@type": "Question", "name": "投标文件上传总提示格式或大小不对，怎么压？", "acceptedAnswer": {"@type": "Answer", "text": "先确认平台要求的格式与大小上限，再决定压缩方式：扫描件用合适的分辨率与压缩方式而不是无限降低清晰度，图片型 PDF 优先做二值化或灰度压缩，可编辑文档只保留必要的嵌入图片。压缩完必须重新打开确认清晰可读。"}}, {"@type": "Question", "name": "开标解密时提示解密失败，还能补救吗？", "acceptedAnswer": {"@type": "Answer", "text": "多数平台在规定时间内允许重新解密，也有明确的超时处理规则。第一时间联系平台技术人员与招标代理并留存记录，同时在规定时限内重试。是否补救、如何补救以平台规则和代理答复为准，不要自行放弃。"}}]}</script>
+</head>
+<body>
+<header><div class="in"><a href="../index.html">← 返回资料下载页</a><h1>电子标上传失败、CA 锁识别不到、签章失败怎么排查</h1><p>工程投标实战指南 · 第 14 篇</p></div></header><main><article>
+<p>电子标最让人崩溃的，不是文件不会做，而是开标当天<b>传不上去</b>：控件装不上、CA 锁读不到证书、签章一直报错、文件超大小被拒、解密超时。这些问题共同的特点是——<b>它们几乎都不发生在「做文件」阶段，而发生在最后两小时</b>。</p>
+<p>排查要有顺序，不要乱试。按「<b>环境层 → 文件层 → 平台层</b>」三层定位，能在大多数情况下几分钟内找到症结。</p>
+
+<h2>一、环境层：先确认「是电脑的问题还是文件的问题」</h2>
+<p>判断方法很简单：<b>换一台电脑试一次</b>。同一份文件在另一台电脑能传，问题就在环境；都传不了，问题在文件或平台。</p>
+<table>
+<tr><th>症状</th><th>优先排查</th><th>处理顺序</th></tr>
+<tr><td>CA 锁插上没反应</td><td>USB 口 / 驱动 / 锁本身</td><td>换后置 USB 口 → 换电脑 →  reinstall 官方驱动 → 联系发证机构</td></tr>
+<tr><td>能读证书但平台提示未检测到</td><td>浏览器与控件</td><td>用平台指定浏览器与版本 → 以管理员身份运行 → 重装控件/助手 → 清缓存重开</td></tr>
+<tr><td>签章时报错或无响应</td><td>证书有效期 / 签章控件 / 系统时间</td><td>校核系统日期时间 → 查证书是否在有效期 → 重装签章控件 → 换电脑</td></tr>
+<tr><td>页面卡住、按钮点不动</td><td>浏览器兼容与缓存</td><td>换指定浏览器 → 关拦截插件 → 清理缓存 → 换电脑</td></tr>
+</table>
+<div class="tips">最容易被忽略的一条：<b>系统时间不对会导致签章/证书校验失败</b>。时区、日期差一天，证书可能被判「尚未生效」或「已过期」。</div>
+
+<h2>二、文件层：格式、大小、命名、内容</h2>
+<ul>
+<li><b>格式</b>：按平台要求（PDF / 加密 PDF / 特定封装格式），不要凭经验交 Word 版。</li>
+<li><b>大小</b>：超限先查上限值，再压缩。图片型 PDF 优先做灰度或二值化压缩、扫描件按可读的最低分辨率重扫；压缩后必须重新打开逐页看一遍清晰度。</li>
+<li><b>命名</b>：按平台规则（项目名称 + 标段 + 投标人 + 文件类型），不用空格和特殊符号，避免中文乱码。</li>
+<li><b>内容</b>：内嵌字体缺失、超链接失效、书签层级错乱，都可能让签章或校验失败；另存为时保留嵌入字体。</li>
+<li><b>加密与权限</b>：部分平台要求先加密再签章，操作顺序反了会报「文件已被修改」。</li>
+</ul>
+
+<h2>三、平台层：时间、回执、解密</h2>
+<ul>
+<li><b>截止时间以上传完成并拿到回执为准</b>，不是以「点开始上传」为准。大文件预留充足时间，避免踩点。</li>
+<li><b>上传成功要留存证据</b>：回执编号、成功页面截图、时间。出现争议时这是唯一凭据。</li>
+<li><b>解密</b>：在规定时段内用投标时同一把 CA 锁解密，锁不在手、证书过期、超时都会导致解密失败。</li>
+<li><b>撤回与重新上传</b>：多数平台在截止前允许撤回重传，但要重新走签盖与加密流程，时间要留够。</li>
+</ul>
+
+<h2>四、8 个高频故障的处理顺序</h2>
+<p>1. CA 锁读不到：换口 → 换机 → 装驱动 → 查证书有效期 → 联系发证机构。<br>
+2. 控件装不上：确认浏览器版本合规 → 关安全软件 → 管理员权限安装 → 换机。<br>
+3. 签章报错：校系统时间 → 查证书有效期 → 重装签章控件 → 换机。<br>
+4. 文件超限：确认上限 → 压缩图片/重扫 → 分页拆分（若允许）→ 复核清晰度。<br>
+5. 上传中断：换网络（有线优先）→ 避开高峰期 → 提前完成，不踩点。<br>
+6. 提示文件被修改：按「先加密后签章」或平台规定顺序重做。<br>
+7. 页面异常：换指定浏览器 → 清缓存 → 关插件 → 换机。<br>
+8. 解密失败：确认同一把锁 → 确认在规定时段 → 立即联系平台与代理并留存记录。</p>
+
+<h2>五、开标前一天的极简演练</h2>
+<p>真正管用的不是临时抱佛脚，而是<b>提前完整走一遍</b>：</p>
+<ul>
+<li>用最终版文件，在开标当天要用的那台电脑、那个网络环境下，完整走一遍「加密 → 签章 → 上传 → 拿回执」。</li>
+<li>把 CA 锁、驱动安装包、备份电脑、备用网络（手机热点）放在一起。</li>
+<li>留一份未加密的可编辑源文件，出问题能立刻重做。</li>
+<li>记录平台技术支持电话与开标代理联系方式，出问题第一时间联系并留痕。</li>
+</ul>
+
+<div class="cta"><b>想要能照着打钩的排查表？</b>上面这套「三层定位 + 8 个故障顺序 + 前一天演练」已整理成可编辑的电子标操作与避坑清单（含 CA 锁、上传解密、电子签章逐项表），拍下即发下载链接：<br><a href="https://www.goofish.com/item?id=1087964665459" target="_blank" rel="noopener">在闲鱼查看「电子标投标操作与避坑手册（CA锁·上传解密·电子签章）」</a></div>
+
+<div class="faq"><h2>常见问题</h2>
+<p><b>CA 锁插上没反应，第一步该查什么？</b><br>先分层：换 USB 口（优先机箱后置口）、换电脑、换数据线，确认是锁本身还是驱动与浏览器环境问题；再看客户端能否读到证书信息。能读证书但平台识别不到，多半是浏览器或控件问题；完全读不到，多半是驱动或硬件问题。</p>
+<p><b>文件总提示格式或大小不对，怎么压？</b><br>先确认平台要求的格式与大小上限，再决定压缩方式：扫描件用合适的分辨率与压缩方式而不是一味降低清晰度，图片型 PDF 优先灰度或二值化压缩，可编辑文档只保留必要的嵌入图片。压缩完必须重新打开确认可读。</p>
+<p><b>开标解密提示失败，还能补救吗？</b><br>多数平台在规定时间内允许重新解密，也有明确的超时规则。第一时间联系平台技术人员与招标代理并留存记录，同时在时限内重试。是否补救以平台规则和代理答复为准，不要自行放弃。</p>
+</div>
+
+<div class="tips">本文只讲<b>电子标操作环节的常见问题与自查方法</b>，不涉及代投标、代签章等违规操作。各省市公共资源交易平台在浏览器版本、控件、加密签章流程、解密时限上规定不同，一切以本项目所在平台的官方说明与招标代理的答复为准。</div>
+</article><h2 style="margin-top:34px">继续看</h2><div class="grid">
+<div class="card"><a href="doc-format-binding.html">投标文件排版与装订：暗标怎么排、正副本怎么装</a><p>形式性废标高发区。按排版、份数、装订、签盖、目录页码五道关逐条自查。</p></div>
+<div class="card"><a href="pre-bid-48h-checklist.html">开标前 48 小时终审清单：23 项逐条核对</a><p>废标多数不是能力问题而是漏项：证照过期、少副本、大小写不一致、CA 锁没带。</p></div>
+<div class="card"><a href="bid-rejection-redlines.html">投标废标红线 45 项自查：五类红线逐条排查</a><p>废标条款散落在招标文件各处。把最常见的五类红线整理成 45 项自查表。</p></div>
+<div class="card"><a href="boq-review.html">工程量清单复核：偏差率怎么算、漏项怎么查</a><p>清单复核不是重新算量，而是找偏差。给出复核顺序与常见漏项位置。</p></div>
+</div>
+<!-- STORE_ENTRY:auto:begin -->
+<h2 style="margin-top:34px">在售清单</h2>
+<div class="grid"><div class="card"><a href="../store.html">全部 27 件在售电子资料（分组 · 价格 · 一句说明）</a><p>清单、台账、模板都做成可编辑文件，拍下即发下载链接。这里能看到全部在售件，按用途分组，不用一篇篇翻。</p></div></div>
+<!-- STORE_ENTRY:auto:end -->
+</main><footer><p>工程资料工具包 · 可编辑电子资料合集　<a href="../index.html">全部资料与下载</a></p></footer>
+</body>
+</html>
