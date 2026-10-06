@@ -25,10 +25,10 @@
 
 | 工具 | 解决什么 | 在线使用 |
 |---|---|---|
-| 废标风险体检 | 45 项废标红线逐条勾选，分「红线 / 高危」两级提示，命中项直接告诉你该改哪一页 | <https://bid-toolkit.app.workbuddy.host/bid-risk-check.html> |
-| 资格审查自查 | 营业执照、资质、人员证件、业绩逐项对缺口，标出还差什么 | <https://bid-toolkit.app.workbuddy.host/certcheck.html> |
-| 常见废标项检查 | 形式性废标项：签章、份数、密封、有效期、大小写一致性 | <https://bid-toolkit.app.workbuddy.host/failcheck.html> |
-| 投标报价测算 | 报价构成与下浮率试算，先算清楚再报价，避免算错签错 | <https://bid-toolkit.app.workbuddy.host/price-calc.html> |
+| 废标风险体检 | 45 项废标红线逐条勾选，分「红线 / 高危」两级提示，命中项直接告诉你该改哪一页 | <https://ldm2007-9576.github.io/bid-toolkit/bid-risk-check.html> |
+| 资格审查自查 | 营业执照、资质、人员证件、业绩逐项对缺口，标出还差什么 | <https://ldm2007-9576.github.io/bid-toolkit/certcheck.html> |
+| 常见废标项检查 | 形式性废标项：签章、份数、密封、有效期、大小写一致性 | <https://ldm2007-9576.github.io/bid-toolkit/failcheck.html> |
+| 投标报价测算 | 报价构成与下浮率试算，先算清楚再报价，避免算错签错 | <https://ldm2007-9576.github.io/bid-toolkit/price-calc.html> |
 
 ## 指南文章
 
@@ -36,22 +36,22 @@
 
 | 指南 | 解决什么 | 在线阅读 |
 |---|---|---|
-| [投标保证金怎么退](https://bid-toolkit.app.workbuddy.host/guides/bid-deposit-refund.html) | 保证金从缴纳到退回的完整流程：谁退、什么时候退、要什么材料，以及最容易卡住的 6 个环节 | 在线阅读 |
-| [投标保证金和保函怎么选](https://bid-toolkit.app.workbuddy.host/guides/bid-bond-vs-deposit.html) | 保函与保证金的成本、资金占用与风险对比，选择看哪四点；保函条款必须核对的项目 | 在线阅读 |
-| [开标前 48 小时终审清单](https://bid-toolkit.app.workbuddy.host/guides/pre-bid-48h-checklist.html) | 23 项逐条核对：证照过期、少副本、大小写不一致、CA 锁没带等临门一脚废标项 | 在线阅读 |
-| [工程量清单复核怎么做](https://bid-toolkit.app.workbuddy.host/guides/boq-review.html) | 招标清单量与图纸量不一致时怎么核、偏差率怎么算、16 类最常见漏项 | 在线阅读 |
-| [评标办法逐条响应表怎么填](https://bid-toolkit.app.workbuddy.host/guides/evaluation-response-table.html) | 把评标办法逐条抄进表格逐条作答，附得分点与高频丢分陷阱 | 在线阅读 |
-| [资格审查资料清单](https://bid-toolkit.app.workbuddy.host/guides/qualification-docs.html) | 16 类资料逐条列明要准备什么、怎么盯有效期，另附 8 种常见不合格情形 | 在线阅读 |
-| [施工组织设计怎么写](https://bid-toolkit.app.workbuddy.host/guides/construction-organization-design.html) | 标准章节框架、每章该写什么，以及最容易被监理退回的 12 个原因 | 在线阅读 |
-| [竣工归档资料怎么组卷](https://bid-toolkit.app.workbuddy.host/guides/completion-archive.html) | 检验批、隐蔽验收、材料报验之间的逻辑关系与常见缺项 | 在线阅读 |
-| [投标废标红线 45 项自查](https://bid-toolkit.app.workbuddy.host/guides/bid-rejection-redlines.html) | 把散落在招标文件各处的废标条款整理成五类 45 项，封标前逐条排掉 | 在线阅读 |
-| [工程签证与索赔](https://bid-toolkit.app.workbuddy.host/guides/variation-and-claim.html) | 现场签证单该写什么、索赔证据怎么收集、时效怎么盯 | 在线阅读 |
-| [投标报价与评标基准价](https://bid-toolkit.app.workbuddy.host/guides/bid-pricing-baseline.html) | 基准价的四种算法、报价三层校验、不平衡报价能用到哪一步为止 | 在线阅读 |
-| [工程投标岗位证书怎么配](https://bid-toolkit.app.workbuddy.host/guides/cert-config.html) | 按发证机关分清四套证书体系，别把特种作业当特种设备 | 在线阅读 |
-| [投标文件排版与装订](https://bid-toolkit.app.workbuddy.host/guides/doc-format-binding.html) | 暗标怎么排、正副本怎么装、签字盖章最容易漏在哪 | 在线阅读 |
-| [电子标上传故障排查](https://bid-toolkit.app.workbuddy.host/guides/ebid-upload-troubleshoot.html) | CA 锁识别不到、签章报错、文件超限、解密超时的三层排查清单 | 在线阅读 |
+| [投标保证金怎么退](https://ldm2007-9576.github.io/bid-toolkit/guides/bid-deposit-refund.html) | 保证金从缴纳到退回的完整流程：谁退、什么时候退、要什么材料，以及最容易卡住的 6 个环节 | 在线阅读 |
+| [投标保证金和保函怎么选](https://ldm2007-9576.github.io/bid-toolkit/guides/bid-bond-vs-deposit.html) | 保函与保证金的成本、资金占用与风险对比，选择看哪四点；保函条款必须核对的项目 | 在线阅读 |
+| [开标前 48 小时终审清单](https://ldm2007-9576.github.io/bid-toolkit/guides/pre-bid-48h-checklist.html) | 23 项逐条核对：证照过期、少副本、大小写不一致、CA 锁没带等临门一脚废标项 | 在线阅读 |
+| [工程量清单复核怎么做](https://ldm2007-9576.github.io/bid-toolkit/guides/boq-review.html) | 招标清单量与图纸量不一致时怎么核、偏差率怎么算、16 类最常见漏项 | 在线阅读 |
+| [评标办法逐条响应表怎么填](https://ldm2007-9576.github.io/bid-toolkit/guides/evaluation-response-table.html) | 把评标办法逐条抄进表格逐条作答，附得分点与高频丢分陷阱 | 在线阅读 |
+| [资格审查资料清单](https://ldm2007-9576.github.io/bid-toolkit/guides/qualification-docs.html) | 16 类资料逐条列明要准备什么、怎么盯有效期，另附 8 种常见不合格情形 | 在线阅读 |
+| [施工组织设计怎么写](https://ldm2007-9576.github.io/bid-toolkit/guides/construction-organization-design.html) | 标准章节框架、每章该写什么，以及最容易被监理退回的 12 个原因 | 在线阅读 |
+| [竣工归档资料怎么组卷](https://ldm2007-9576.github.io/bid-toolkit/guides/completion-archive.html) | 检验批、隐蔽验收、材料报验之间的逻辑关系与常见缺项 | 在线阅读 |
+| [投标废标红线 45 项自查](https://ldm2007-9576.github.io/bid-toolkit/guides/bid-rejection-redlines.html) | 把散落在招标文件各处的废标条款整理成五类 45 项，封标前逐条排掉 | 在线阅读 |
+| [工程签证与索赔](https://ldm2007-9576.github.io/bid-toolkit/guides/variation-and-claim.html) | 现场签证单该写什么、索赔证据怎么收集、时效怎么盯 | 在线阅读 |
+| [投标报价与评标基准价](https://ldm2007-9576.github.io/bid-toolkit/guides/bid-pricing-baseline.html) | 基准价的四种算法、报价三层校验、不平衡报价能用到哪一步为止 | 在线阅读 |
+| [工程投标岗位证书怎么配](https://ldm2007-9576.github.io/bid-toolkit/guides/cert-config.html) | 按发证机关分清四套证书体系，别把特种作业当特种设备 | 在线阅读 |
+| [投标文件排版与装订](https://ldm2007-9576.github.io/bid-toolkit/guides/doc-format-binding.html) | 暗标怎么排、正副本怎么装、签字盖章最容易漏在哪 | 在线阅读 |
+| [电子标上传故障排查](https://ldm2007-9576.github.io/bid-toolkit/guides/ebid-upload-troubleshoot.html) | CA 锁识别不到、签章报错、文件超限、解密超时的三层排查清单 | 在线阅读 |
 
-全部指南目录：<https://bid-toolkit.app.workbuddy.host/guides/>
+全部指南目录：<https://ldm2007-9576.github.io/bid-toolkit/guides/>
 
 ## 在售清单
 
@@ -59,7 +59,7 @@
 它由在架商品真源自动生成，不是手写页面 —— 商品下架或上新时同步重生成，
 避免"页面还挂着已下架的商品"这类静默失效。
 
-在线版：<https://bid-toolkit.app.workbuddy.host/store.html>
+在线版：<https://ldm2007-9576.github.io/bid-toolkit/store.html>
 
 ## 本地运行
 
