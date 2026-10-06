@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="免费在线投标文件废标红线自查：45 项逐条勾选，红线与高危分级提示，命中项直接告诉你该改哪一页，数据只存在本机浏览器，不上传。">
 <title>投标文件废标红线自查器 · 45项</title>
 <style>
 *{box-sizing:border-box}
@@ -85,9 +86,10 @@ ul.risk li{margin:3px 0}
   <h3>核完还是拿不准？</h3>
   <p>这 45 项是通用项。你那份招标文件的<b>专用条款</b>（比如水利、暗标、特定业绩要求）不在这里面，
   而废标往往就废在这些专用条款上。<br>
-  把招标文件 / 你做好的投标文件发我，我这边扫一遍，直接告诉你哪几条会废标、在第几页 —— <b>今天免费</b>，不用装软件，不看你的报价。</p>
-  <a class="cta" href="https://www.goofish.com/item?id=1084295435400" target="_blank" rel="noopener">闲鱼发文件给我 · 免费扫一遍 →</a>
-  <div class="tip">不放心发文件也行：拍下 45 项可编辑 Excel 版（带判定栏 + 证据栏），自己逐项填，拍下自动发货。</div>
+  把做好的投标文件（.docx）发我，机器逐条扫完，直接告诉你哪几条会废标、在第几页 —— 不用装软件，不看你的报价。</p>
+  <a class="cta" href="https://www.goofish.com/item?id=1087170587415" target="_blank" rel="noopener">闲鱼发标书 .docx · 机器逐条扫 →</a>
+  <div class="tip">你怎么发、我怎么回：把标书 <b>.docx</b> 发过来，扫完发你<b>分级问题清单 ＋ HTML 报告</b>（24 小时内），每条都带证据（命中了哪个词、哪个值）。<br>
+  只想自己核对也行：拍下 <a href="https://www.goofish.com/item?id=1084295435400" target="_blank" rel="noopener">45 项可编辑 Excel 版</a>（带判定栏 ＋ 证据栏，拍下自动发货）。</div>
 </div>
 
 <div class="foot">进度只存在你自己这台设备上，不上传。<br>通用项以《招标投标法》及各地交易中心常见要求整理；最终以你那份招标文件为准。</div>
@@ -154,9 +156,12 @@ function refresh(all){
   var dc=document.getElementById('dyncta');
   var XL='<a href="https://www.goofish.com/item?id=1084295435400" target="_blank" rel="noopener">'
         +'45 项可编辑 Excel 版 · 带判定栏+证据栏 · 拍下自动发货 →</a>';
+  var SV='<a href="https://www.goofish.com/item?id=1087170587415" target="_blank" rel="noopener">'
+        +'发标书 .docx 给我 · 机器逐条扫 · 24h 出分级清单+HTML报告 →</a>';
   if(rd>0){dc.style.display='block';
     dc.innerHTML='<b>这 '+rd+' 条得改文件或补证据</b>，开标前留不下依据等于没改。'
-      +(hg?'另有 '+hg+' 条高危，同样要留痕。':'')+'逐条填进表里，填完打印直接附进标书：'+XL;}
+      +(hg?'另有 '+hg+' 条高危，同样要留痕。':'')+'把你这份 .docx 发我，机器直接告诉你命中在第几页：'+SV
+      +'<br>自己逐条填也行：'+XL;}
   else if(dn===all.length&&hg>0){dc.style.display='block';
     dc.innerHTML='红线都过了，剩 <b>'+hg+' 条高危</b>——不一定废标，但常被扣分、被质疑。'
       +'把依据逐条记下来，问的时候拿得出：'+XL;}
