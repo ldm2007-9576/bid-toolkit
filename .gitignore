@@ -6,8 +6,14 @@ files/
 *.docx
 *.xlsx
 
-# sitemap.xml 里列着 files/ 下每个交付物的直链 ⇒ 公开它等于间接公开商品。
-sitemap.xml
+# ⚠ sitemap.xml 曾经被整体忽略，理由是「老版 sitemap 里列着 files/ 下每个交付物的直链
+#   ⇒ 公开它等于间接公开商品」。R229：老版 sitemap 30 条里绝大部分是 /files/*.zip，
+#   而这些 URL 又被 robots 的 Disallow: /files/ 挡着 ⇒ 提交了也没用，纯属自相矛盾。
+#   新版 sitemap **只列可抓取页面**（首页 + 5 个工具页 + 15 个指南页，共 22 条），
+#   不含任何 /files/ 直链 ⇒ 可以安全公开。
+# 🔴 例外的前提：sitemap 里**绝不允许**再出现 /files/ 下的交付物 URL。
+#   谁要往 sitemap 里加交付物直链，必须同时把下面这行例外删掉。
+!sitemap.xml
 
 # IndexNow 密钥文件（key 本身可公开，但没必要，且会让人误以为本站有多个 key）
 587fc5c4b43ca5bedd18bd0055e1a9ef.txt
