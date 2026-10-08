@@ -3,4 +3,4 @@ Disallow: /files/
 Disallow: /img/
 Allow: /
 
-Sitemap: https://bid-toolkit.app.workbuddy.host/sitemap.xml
+Sitemap: https://ldm2007-9576.github.io/bid-toolkit/sitemap.xml
